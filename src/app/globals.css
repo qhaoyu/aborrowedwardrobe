@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --color-cream: #f7f1e3;
+  --color-ink: #241b14;
+  --color-terracotta: #b1502f;
+  --color-gold: #c9a53d;
+  --color-indigo: #22384a;
+  --color-line: #e2d6b8;
+}
+
+@theme inline {
+  --color-background: var(--color-cream);
+  --color-foreground: var(--color-ink);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+.font-serif {
+  font-family: var(--font-display);
+}
