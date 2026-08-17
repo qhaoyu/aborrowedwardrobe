@@ -80,15 +80,64 @@ part of the Stripe-hosted checkout page.
 ## Deploying
 
 This is a standard Next.js app, so it deploys cleanly to
-[Vercel](https://vercel.com/new) (recommended) or any Node.js host that
-supports Next.js. Set `STRIPE_SECRET_KEY` and
-`NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` as environment variables on the hosting
-platform, then update `contactEmail` in `src/lib/site.ts` to your real
-business email.
+[Vercel](https://vercel.com/new), [Netlify](https://netlify.com), any
+Node.js host, or Cloudflare (see below). On whichever platform you pick, set
+`STRIPE_SECRET_KEY` as an environment variable/secret, and update
+`contactEmail` in `src/lib/site.ts` to your real business email.
+
+### Deploying to Cloudflare Workers
+
+The repo is already wired up for Cloudflare via
+[`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare) (config in
+`wrangler.jsonc` and `open-next.config.ts`).
+
+1. **One-time login:**
+   ```bash
+   npx wrangler login
+   ```
+2. **Set the Stripe secret** (this is the only env var the app actually
+   reads at runtime):
+   ```bash
+   npx wrangler secret put STRIPE_SECRET_KEY
+   ```
+   Paste your `sk_live_...` (or `sk_test_...` while testing) key when
+   prompted. Secrets set this way are encrypted and never appear in
+   `wrangler.jsonc` or the repo.
+3. **Deploy:**
+   ```bash
+   npm run cf:deploy
+   ```
+   This runs `next build`, adapts the output for Cloudflare, and deploys the
+   Worker. You'll get a `*.workers.dev` URL immediately.
+4. **Point your domain at it:** in the Cloudflare dashboard, go to
+   **Workers & Pages → aborrowedwardrobe → Settings → Domains & Routes** and
+   add your custom domain. If your domain's DNS already lives on Cloudflare,
+   this is a one-click step; otherwise Cloudflare will walk you through
+   moving the domain's nameservers over first.
+
+Other useful scripts:
+
+- `npm run cf:build` — build and adapt for Cloudflare without deploying.
+- `npm run cf:preview` — build, then run the Worker locally via Wrangler
+  (closer to production than `next dev`).
+- `npm run cf:typegen` — regenerate `cloudflare-env.d.ts` if you add
+  bindings (KV, R2, etc.) to `wrangler.jsonc`.
+
+**Continuous deploys:** instead of running `npm run cf:deploy` by hand, you
+can connect the GitHub repo under **Workers & Pages → Create → Connect to
+Git** in the Cloudflare dashboard so every push to `main` deploys
+automatically (set `STRIPE_SECRET_KEY` as a secret there too — build-time
+environment variables and runtime secrets are configured separately in that
+UI).
+
+`compatibility_flags` in `wrangler.jsonc` includes `nodejs_compat`, which
+the Stripe SDK needs to run on Workers — don't remove it.
 
 ## Project structure
 
 ```
+wrangler.jsonc            # Cloudflare Worker config
+open-next.config.ts       # OpenNext Cloudflare adapter config
 src/
   app/
     page.tsx               # Homepage

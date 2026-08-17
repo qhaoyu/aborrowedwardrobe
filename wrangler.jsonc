@@ -1,0 +1,25 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	// This is the name of your Worker on Cloudflare — rename it if you'd
+	// prefer something other than the repo name.
+	"name": "aborrowedwardrobe",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2024-09-23",
+	// nodejs_compat is required for the Stripe SDK (and Next.js itself) to run.
+	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		{
+			// Self-reference binding used by OpenNext for correct caching
+			// behaviour. The service name must match "name" above.
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "aborrowedwardrobe"
+		}
+	],
+	"observability": {
+		"enabled": true
+	}
+}
