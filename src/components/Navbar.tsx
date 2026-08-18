@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "@/lib/cart-context";
@@ -17,12 +18,22 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-[color:var(--color-line)] bg-[color:var(--color-cream)]/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-        <Link href="/" className="flex flex-col leading-none" onClick={() => setOpen(false)}>
-          <span className="font-serif text-lg tracking-wide text-[color:var(--color-ink)] sm:text-xl">
-            A Borrowed Wardrobe
-          </span>
-          <span className="text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-terracotta)]">
-            Petaling Street · Kuala Lumpur
+        <Link href="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
+          <Image
+            src="/brand/mark.png"
+            alt=""
+            width={40}
+            height={40}
+            className="h-9 w-9 shrink-0 sm:h-10 sm:w-10"
+            priority
+          />
+          <span className="flex flex-col leading-none">
+            <span className="font-serif text-lg tracking-wide text-[color:var(--color-ink)] sm:text-xl">
+              A Borrowed Wardrobe
+            </span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-terracotta)]">
+              Petaling Street · Kuala Lumpur
+            </span>
           </span>
         </Link>
 

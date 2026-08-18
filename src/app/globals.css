@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --color-cream: #f7f1e3;
-  --color-ink: #241b14;
-  --color-terracotta: #b1502f;
+  /* Sampled from the real brand logo (A_BORROWED_WARDROBE_LOGO) */
+  --color-cream: #fff8f2;
+  --color-ink: #422d1e;
+  --color-terracotta: #8b2c30;
   --color-gold: #c9a53d;
   --color-indigo: #22384a;
-  --color-line: #e2d6b8;
+  --color-line: #e8e0d9;
 }
 
 @theme inline {

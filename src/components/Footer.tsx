@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 
@@ -6,7 +7,16 @@ export default function Footer() {
     <footer className="border-t border-[color:var(--color-line)] bg-[color:var(--color-ink)] text-[color:var(--color-cream)]">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-3">
         <div>
-          <p className="font-serif text-lg">A Borrowed Wardrobe</p>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/brand/mark.png"
+              alt=""
+              width={44}
+              height={44}
+              className="h-11 w-11 shrink-0 rounded-lg"
+            />
+            <p className="font-serif text-lg">A Borrowed Wardrobe</p>
+          </div>
           <p className="mt-3 max-w-xs text-sm text-[color:var(--color-cream)]/70">
             Batik shirts and dresses made for wandering — designed and sold
             from the heart of Petaling Street, Chinatown, Kuala Lumpur.
