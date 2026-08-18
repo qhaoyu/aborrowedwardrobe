@@ -19,6 +19,7 @@ export default function BatikSwatch({
   return (
     <svg
       viewBox="0 0 200 200"
+      preserveAspectRatio="xMidYMid slice"
       className={className}
       role="img"
       aria-label={`Batik ${pattern} pattern swatch`}

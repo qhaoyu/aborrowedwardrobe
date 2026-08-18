@@ -3,6 +3,13 @@
 	// This is the name of your Worker on Cloudflare — rename it if you'd
 	// prefer something other than the repo name.
 	"name": "aborrowedwardrobe",
+	// Belt-and-suspenders: makes `wrangler deploy` run the OpenNext Cloudflare
+	// build itself before bundling, so deployment doesn't depend on the
+	// dashboard's "Build command" field being correct (it has separate
+	// settings per branch/environment and is easy to leave misconfigured).
+	"build": {
+		"command": "npm run cf:build"
+	},
 	"main": ".open-next/worker.js",
 	"compatibility_date": "2024-09-23",
 	// nodejs_compat is required for the Stripe SDK (and Next.js itself) to run.

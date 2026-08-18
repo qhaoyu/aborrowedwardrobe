@@ -1,6 +1,8 @@
 import Link from "next/link";
 import BatikSwatch from "@/components/BatikSwatch";
 import ProductCard from "@/components/ProductCard";
+import ScrollReveal from "@/components/ScrollReveal";
+import StoryBlock from "@/components/StoryBlock";
 import { products } from "@/lib/products";
 
 export default function Home() {
@@ -8,90 +10,146 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-[color:var(--color-line)]">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 sm:py-24 md:grid-cols-2">
-          <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-[color:var(--color-terracotta)]">
-              Petaling Street · Chinatown · Kuala Lumpur
-            </p>
-            <h1 className="mt-4 font-serif text-4xl leading-tight text-[color:var(--color-ink)] sm:text-5xl">
-              Wear the street you wandered.
-            </h1>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-[color:var(--color-ink)]/75">
-              A Borrowed Wardrobe designs batik shirts and dresses out of a
-              small studio in the middle of Petaling Street — for travellers
-              who want to carry a piece of Kuala Lumpur home with them.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/shop"
-                className="rounded-sm bg-[color:var(--color-terracotta)] px-6 py-3 text-sm uppercase tracking-wide text-[color:var(--color-cream)] transition-opacity hover:opacity-90"
-              >
-                Shop the Collection
-              </Link>
-              <Link
-                href="/about"
-                className="rounded-sm border border-[color:var(--color-ink)] px-6 py-3 text-sm uppercase tracking-wide text-[color:var(--color-ink)] transition-colors hover:bg-[color:var(--color-ink)] hover:text-[color:var(--color-cream)]"
-              >
-                Read Our Story
-              </Link>
+      {/* Opening — a minimal, cinematic statement. Everything else reveals as you scroll. */}
+      <section className="relative flex min-h-[90svh] flex-col justify-center overflow-hidden border-b border-[color:var(--color-line)] px-5 sm:px-8">
+        <div
+          className="pointer-events-none absolute -right-32 top-1/2 hidden w-[28rem] -translate-y-1/2 opacity-[0.12] sm:block lg:w-[36rem]"
+          aria-hidden
+        >
+          <BatikSwatch
+            pattern="parang"
+            colorway={["#7a2e2e", "#c9a53d"]}
+            className="aspect-square w-full"
+          />
+        </div>
+
+        <div className="relative mx-auto w-full max-w-6xl py-24 sm:py-28">
+          <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--color-terracotta)]">
+            A Borrowed Wardrobe
+          </p>
+          <p className="mt-2 text-xs uppercase tracking-[0.25em] text-[color:var(--color-ink)]/50">
+            Petaling Street · Chinatown · Kuala Lumpur
+          </p>
+          <h1 className="mt-6 max-w-3xl font-serif text-5xl leading-[1.05] text-[color:var(--color-ink)] sm:text-6xl md:text-7xl">
+            Wear the street you wandered.
+          </h1>
+          <p className="mt-6 max-w-md text-base leading-relaxed text-[color:var(--color-ink)]/75">
+            A Borrowed Wardrobe designs batik shirts and dresses out of a
+            small studio in the middle of Petaling Street — for travellers
+            who want to carry a piece of Kuala Lumpur home with them.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-4">
+            <Link
+              href="/shop"
+              className="rounded-sm bg-[color:var(--color-terracotta)] px-6 py-3 text-sm uppercase tracking-wide text-[color:var(--color-cream)] transition-opacity hover:opacity-90"
+            >
+              Shop the Collection
+            </Link>
+            <Link
+              href="/about"
+              className="rounded-sm border border-[color:var(--color-ink)] px-6 py-3 text-sm uppercase tracking-wide text-[color:var(--color-ink)] transition-colors hover:bg-[color:var(--color-ink)] hover:text-[color:var(--color-cream)]"
+            >
+              Read Our Story
+            </Link>
+          </div>
+        </div>
+
+        <div className="absolute inset-x-0 bottom-8 flex justify-center">
+          <span
+            className="h-10 w-px animate-pulse bg-[color:var(--color-ink)]/30"
+            aria-hidden
+          />
+        </div>
+      </section>
+
+      {/* The story, told the way a portfolio tells a case study: observation, craft, place. */}
+      <StoryBlock
+        eyebrow="The Street"
+        heading="They always stopped. They rarely bought."
+        pattern="parang"
+        colorway={["#7a2e2e", "#d99a3d"]}
+      >
+        <p>
+          Travellers walking through Petaling Street would stop, again and
+          again, in front of the same batik stalls — running their hands
+          over the fabric, admiring patterns they didn&apos;t quite know the
+          meaning of.
+        </p>
+        <p>
+          Most left without buying anything, unsure of the fit, or the
+          story behind what they were looking at.
+        </p>
+      </StoryBlock>
+
+      <StoryBlock
+        eyebrow="The Craft"
+        heading="A story printed into every motif."
+        pattern="kawung"
+        colorway={["#1f3a3d", "#c9b458"]}
+        reverse
+      >
+        <p>
+          We wanted to change that. Every shirt and dress we make is
+          block-printed with a traditional batik motif and cut in modern,
+          travel-friendly silhouettes.
+        </p>
+        <p className="italic text-[color:var(--color-ink)]/85">
+          &ldquo;Parang for resilience, kawung for balance, truntum for a
+          love that keeps growing.&rdquo;
+        </p>
+      </StoryBlock>
+
+      <StoryBlock
+        eyebrow="The Studio"
+        heading="Above a shopfront, on the street itself."
+        pattern="mega-mendung"
+        colorway={["#1e3a5f", "#e8e2d0"]}
+      >
+        <p>
+          Our studio sits above a shopfront in the middle of Chinatown,
+          Kuala Lumpur — the same street our customers wander through on
+          their first night in the city.
+        </p>
+        <p>
+          The same street we hope they&apos;ll think of every time they
+          wear what they bought here.
+        </p>
+      </StoryBlock>
+
+      {/* The collection — a clean, boutique-grade showcase. */}
+      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+        <ScrollReveal>
+          <div className="mb-12 flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-[0.25em] text-[color:var(--color-terracotta)]">
+                The Collection
+              </p>
+              <h2 className="mt-2 font-serif text-3xl text-[color:var(--color-ink)] sm:text-4xl">
+                Shirts &amp; Dresses
+              </h2>
+              <p className="mt-3 max-w-md text-sm leading-relaxed text-[color:var(--color-ink)]/70">
+                Hand-block-printed batik, cut for warm-weather travel. Every
+                piece ships from our studio on Petaling Street.
+              </p>
             </div>
+            <Link
+              href="/shop"
+              className="hidden shrink-0 text-sm uppercase tracking-wide text-[color:var(--color-ink)] underline underline-offset-4 sm:block"
+            >
+              View all
+            </Link>
           </div>
+        </ScrollReveal>
 
-          <div className="grid grid-cols-2 gap-4">
-            <BatikSwatch
-              pattern="parang"
-              colorway={["#7a2e2e", "#d99a3d"]}
-              className="aspect-[3/4] w-full rounded-sm shadow-md"
-            />
-            <BatikSwatch
-              pattern="mega-mendung"
-              colorway={["#1e3a5f", "#e8e2d0"]}
-              className="mt-8 aspect-[3/4] w-full rounded-sm shadow-md"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Story strip */}
-      <section className="border-b border-[color:var(--color-line)] bg-white/40">
-        <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-8">
-          <p className="font-serif text-2xl leading-relaxed text-[color:var(--color-ink)] sm:text-3xl">
-            &ldquo;Every motif on our shirts and dresses is chosen for what it
-            means, not just how it looks — parang for resilience, kawung for
-            balance, truntum for a love that keeps growing.&rdquo;
-          </p>
-          <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[color:var(--color-terracotta)]">
-            Designed above a shopfront on Petaling Street
-          </p>
-        </div>
-      </section>
-
-      {/* Featured products */}
-      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-        <div className="mb-10 flex items-end justify-between">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-terracotta)]">
-              The Collection
-            </p>
-            <h2 className="mt-2 font-serif text-3xl text-[color:var(--color-ink)]">
-              Shirts &amp; Dresses
-            </h2>
-          </div>
-          <Link
-            href="/shop"
-            className="hidden text-sm uppercase tracking-wide text-[color:var(--color-ink)] underline underline-offset-4 sm:block"
-          >
-            View all
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
-          {featured.map((product) => (
-            <ProductCard key={product.slug} product={product} />
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 md:grid-cols-4">
+          {featured.map((product, i) => (
+            <ScrollReveal key={product.slug} delay={i * 80}>
+              <ProductCard product={product} />
+            </ScrollReveal>
           ))}
         </div>
-        <div className="mt-8 sm:hidden">
+
+        <div className="mt-10 sm:hidden">
           <Link
             href="/shop"
             className="text-sm uppercase tracking-wide text-[color:var(--color-ink)] underline underline-offset-4"
@@ -102,29 +160,31 @@ export default function Home() {
       </section>
 
       {/* Rental teaser */}
-      <section className="bg-[color:var(--color-indigo)] text-[color:var(--color-cream)]">
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-5 py-16 sm:px-8 md:flex-row md:items-center md:justify-between">
-          <div className="max-w-xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-gold)]">
-              Coming Soon
-            </p>
-            <h2 className="mt-2 font-serif text-3xl">
-              Borrow a costume, not just a shirt.
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-cream)]/80">
-              We&apos;re building a rental experience for tourists — dress up
-              in traditional costume for a photoshoot walk through Kuala
-              Lumpur, then return it before you fly home.
-            </p>
+      <ScrollReveal>
+        <section className="bg-[color:var(--color-indigo)] text-[color:var(--color-cream)]">
+          <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-5 py-16 sm:px-8 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-xl">
+              <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-gold)]">
+                Coming Soon
+              </p>
+              <h2 className="mt-2 font-serif text-3xl">
+                Borrow a costume, not just a shirt.
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-cream)]/80">
+                We&apos;re building a rental experience for tourists — dress
+                up in traditional costume for a photoshoot walk through
+                Kuala Lumpur, then return it before you fly home.
+              </p>
+            </div>
+            <Link
+              href="/rental"
+              className="whitespace-nowrap rounded-sm border border-[color:var(--color-cream)] px-6 py-3 text-sm uppercase tracking-wide transition-colors hover:bg-[color:var(--color-cream)] hover:text-[color:var(--color-indigo)]"
+            >
+              Learn More
+            </Link>
           </div>
-          <Link
-            href="/rental"
-            className="whitespace-nowrap rounded-sm border border-[color:var(--color-cream)] px-6 py-3 text-sm uppercase tracking-wide transition-colors hover:bg-[color:var(--color-cream)] hover:text-[color:var(--color-indigo)]"
-          >
-            Learn More
-          </Link>
-        </div>
-      </section>
+        </section>
+      </ScrollReveal>
     </div>
   );
 }
