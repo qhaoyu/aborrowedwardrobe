@@ -1,6 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type ScrollRevealProps = {
   children: ReactNode;
@@ -14,34 +18,36 @@ export default function ScrollReveal({
   delay = 0,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
 
-    // Reduced motion is handled in CSS (globals.css strips the transition),
-    // so this observer only ever needs to flip visibility, never animation.
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
-    );
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.set(node, { opacity: 1, y: 0 });
+      return;
+    }
 
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
+    const tween = gsap.from(node, {
+      opacity: 0,
+      y: 28,
+      duration: 0.8,
+      delay: delay / 1000,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: node,
+        start: "top 85%",
+      },
+    });
+
+    return () => {
+      tween.scrollTrigger?.kill();
+      tween.kill();
+    };
+  }, [delay]);
 
   return (
-    <div
-      ref={ref}
-      className={`reveal${visible ? " reveal-visible" : ""}${className ? ` ${className}` : ""}`}
-      style={{ transitionDelay: visible && delay ? `${delay}ms` : undefined }}
-    >
+    <div ref={ref} className={className}>
       {children}
     </div>
   );
