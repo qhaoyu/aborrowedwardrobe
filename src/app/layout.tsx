@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import { CartProvider } from "@/lib/cart-context";
 
 const display = Playfair_Display({
@@ -30,11 +31,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${display.variable} ${body.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-[color:var(--color-cream)] font-sans text-[color:var(--color-ink)]">
-        <CartProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </CartProvider>
+        <SmoothScrollProvider>
+          <CartProvider>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </CartProvider>
+        </SmoothScrollProvider>
       </body>
     </html>
   );

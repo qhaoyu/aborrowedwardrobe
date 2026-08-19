@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import BatikSwatch from "@/components/BatikSwatch";
+import ParallaxImage from "@/components/ParallaxImage";
 import ScrollReveal from "@/components/ScrollReveal";
 import type { BatikPattern } from "@/lib/products";
 
@@ -35,11 +36,9 @@ export default function StoryBlock({
           </div>
         </ScrollReveal>
         <ScrollReveal delay={120} className={reverse ? "md:order-1" : undefined}>
-          <BatikSwatch
-            pattern={pattern}
-            colorway={colorway}
-            className="aspect-[4/5] w-full rounded-sm shadow-md"
-          />
+          <ParallaxImage className="aspect-[4/5] w-full rounded-sm shadow-md">
+            <BatikSwatch pattern={pattern} colorway={colorway} className="h-full w-full" />
+          </ParallaxImage>
         </ScrollReveal>
       </div>
     </section>
