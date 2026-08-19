@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import BatikSwatch from "@/components/BatikSwatch";
 import AddToCartForm from "@/components/AddToCartForm";
@@ -47,11 +48,24 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </Link>
 
       <div className="mt-6 grid gap-10 md:grid-cols-2">
-        <BatikSwatch
-          pattern={product.pattern}
-          colorway={product.colorway}
-          className="aspect-square w-full rounded-sm shadow-md"
-        />
+        {product.photo ? (
+          <div className="relative aspect-square w-full overflow-hidden rounded-sm shadow-md">
+            <Image
+              src={product.photo}
+              alt={product.name}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              priority
+              className="object-cover"
+            />
+          </div>
+        ) : (
+          <BatikSwatch
+            pattern={product.pattern}
+            colorway={product.colorway}
+            className="aspect-square w-full rounded-sm shadow-md"
+          />
+        )}
 
         <div>
           <p className="text-xs uppercase tracking-[0.15em] text-[color:var(--color-terracotta)]">

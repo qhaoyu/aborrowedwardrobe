@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-import BatikSwatch from "@/components/BatikSwatch";
 import ProductCard from "@/components/ProductCard";
 import ScrollReveal from "@/components/ScrollReveal";
 import StoryBlock from "@/components/StoryBlock";
@@ -13,13 +13,16 @@ export default function Home() {
       {/* Opening — a minimal, cinematic statement. Everything else reveals as you scroll. */}
       <section className="relative flex min-h-[90svh] flex-col justify-center overflow-hidden border-b border-[color:var(--color-line)] px-5 sm:px-8">
         <div
-          className="pointer-events-none absolute -right-32 top-1/2 hidden w-[28rem] -translate-y-1/2 opacity-[0.12] sm:block lg:w-[36rem]"
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-[45%] sm:block [mask-image:linear-gradient(to_right,transparent,black_20%)]"
           aria-hidden
         >
-          <BatikSwatch
-            pattern="parang"
-            colorway={["#7a2e2e", "#c9a53d"]}
-            className="aspect-square w-full"
+          <Image
+            src="/products/red-black-gold-crown-dress/rob01756.jpg"
+            alt=""
+            fill
+            priority
+            sizes="45vw"
+            className="object-cover"
           />
         </div>
 
@@ -66,8 +69,8 @@ export default function Home() {
       <StoryBlock
         eyebrow="The Street"
         heading="They always stopped. They rarely bought."
-        pattern="parang"
-        colorway={["#7a2e2e", "#d99a3d"]}
+        photo="/products/black-draped-songket-skirt-set/rob09436.jpg"
+        photoAlt="A model in songket fabric in a Kuala Lumpur mural alley"
       >
         <p>
           Travellers walking through Petaling Street would stop, again and
@@ -84,8 +87,8 @@ export default function Home() {
       <StoryBlock
         eyebrow="The Craft"
         heading="A story printed into every motif."
-        pattern="kawung"
-        colorway={["#1f3a3d", "#c9b458"]}
+        photo="/products/orange-batik-blazer-skirt/rob00938.jpg"
+        photoAlt="A model in a batik jacket near Central Market, Kuala Lumpur"
         reverse
       >
         <p>
@@ -102,8 +105,8 @@ export default function Home() {
       <StoryBlock
         eyebrow="The Studio"
         heading="Above a shopfront, on the street itself."
-        pattern="mega-mendung"
-        colorway={["#1e3a5f", "#e8e2d0"]}
+        photo="/products/white-floral-blue-cape-dress/rob08681.jpg"
+        photoAlt="A model in an embroidered cape dress in a Kuala Lumpur market"
       >
         <p>
           Our studio sits above a shopfront in the middle of Chinatown,
