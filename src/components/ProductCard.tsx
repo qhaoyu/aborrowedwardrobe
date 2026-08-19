@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import BatikSwatch from "@/components/BatikSwatch";
 import TiltCard from "@/components/TiltCard";
@@ -11,11 +12,21 @@ export default function ProductCard({ product }: { product: Product }) {
     >
       <TiltCard className="flex h-full flex-col">
         <div className="relative aspect-[4/5] w-full overflow-hidden">
-          <BatikSwatch
-            pattern={product.pattern}
-            colorway={product.colorway}
-            className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-110"
-          />
+          {product.photo ? (
+            <Image
+              src={product.photo}
+              alt={product.name}
+              fill
+              sizes="(min-width: 768px) 25vw, 50vw"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+            />
+          ) : (
+            <BatikSwatch
+              pattern={product.pattern}
+              colorway={product.colorway}
+              className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-110"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)]/70 via-[color:var(--color-ink)]/0 to-transparent opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100" />
           <span className="absolute inset-x-0 bottom-4 mx-auto w-fit translate-y-3 rounded-full bg-[color:var(--color-cream)] px-4 py-1.5 text-xs uppercase tracking-[0.15em] text-[color:var(--color-ink)] opacity-0 shadow-md transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
             View Piece

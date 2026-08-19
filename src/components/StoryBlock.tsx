@@ -1,15 +1,14 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
-import BatikSwatch from "@/components/BatikSwatch";
 import ParallaxImage from "@/components/ParallaxImage";
 import ScrollReveal from "@/components/ScrollReveal";
-import type { BatikPattern } from "@/lib/products";
 
 type StoryBlockProps = {
   eyebrow: string;
   heading: string;
   children: ReactNode;
-  pattern: BatikPattern;
-  colorway: [string, string];
+  photo: string;
+  photoAlt: string;
   reverse?: boolean;
 };
 
@@ -17,8 +16,8 @@ export default function StoryBlock({
   eyebrow,
   heading,
   children,
-  pattern,
-  colorway,
+  photo,
+  photoAlt,
   reverse = false,
 }: StoryBlockProps) {
   return (
@@ -37,7 +36,13 @@ export default function StoryBlock({
         </ScrollReveal>
         <ScrollReveal delay={120} className={reverse ? "md:order-1" : undefined}>
           <ParallaxImage className="aspect-[4/5] w-full rounded-sm shadow-md">
-            <BatikSwatch pattern={pattern} colorway={colorway} className="h-full w-full" />
+            <Image
+              src={photo}
+              alt={photoAlt}
+              fill
+              sizes="(min-width: 768px) 40vw, 90vw"
+              className="object-cover"
+            />
           </ParallaxImage>
         </ScrollReveal>
       </div>
