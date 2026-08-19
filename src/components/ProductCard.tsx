@@ -11,14 +11,14 @@ export default function ProductCard({ product }: { product: Product }) {
       className="group block h-full overflow-hidden rounded-sm border border-[color:var(--color-line)] bg-white/40 transition-shadow duration-500 ease-out hover:shadow-xl"
     >
       <TiltCard className="flex h-full flex-col">
-        <div className="relative aspect-[4/5] w-full overflow-hidden">
+        <div className="relative aspect-[2/3] w-full overflow-hidden">
           {product.photo ? (
             <Image
               src={product.photo}
               alt={product.name}
               fill
               sizes="(min-width: 768px) 25vw, 50vw"
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+              className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110"
             />
           ) : (
             <BatikSwatch

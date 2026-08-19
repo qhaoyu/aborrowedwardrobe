@@ -49,14 +49,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       <div className="mt-6 grid gap-10 md:grid-cols-2">
         {product.photo ? (
-          <div className="relative aspect-square w-full overflow-hidden rounded-sm shadow-md">
+          <div className="relative aspect-[2/3] w-full overflow-hidden rounded-sm shadow-md">
             <Image
               src={product.photo}
               alt={product.name}
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
               priority
-              className="object-cover"
+              className="object-cover object-top"
             />
           </div>
         ) : (

@@ -35,13 +35,13 @@ export default function StoryBlock({
           </div>
         </ScrollReveal>
         <ScrollReveal delay={120} className={reverse ? "md:order-1" : undefined}>
-          <ParallaxImage className="aspect-[4/5] w-full rounded-sm shadow-md">
+          <ParallaxImage className="aspect-[2/3] w-full rounded-sm shadow-md">
             <Image
               src={photo}
               alt={photoAlt}
               fill
               sizes="(min-width: 768px) 40vw, 90vw"
-              className="object-cover"
+              className="object-cover object-top"
             />
           </ParallaxImage>
         </ScrollReveal>

@@ -6,10 +6,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Wraps an image so it drifts vertically at a different rate than the
-// page as you scroll past it — the "photo shifting" effect. The inner
-// layer is oversized (140% height, centered) so the shift never exposes
-// empty space at the edges.
+// Wraps an image so it settles into place as you scroll past it — the
+// "photo shifting" effect. The layer scales down from a *top-anchored*
+// transform-origin, so the top edge of the image never moves and can
+// never be cropped (unlike an oversized/centered layer translated with
+// yPercent: that only has one exact translate value with zero top-crop
+// and zero exposed gap, which leaves no room to actually animate).
+// All the "give" for the effect comes from the bottom edge instead,
+// which is a much safer place to lose a sliver of these portrait photos.
 export default function ParallaxImage({
   children,
   className,
@@ -28,9 +32,9 @@ export default function ParallaxImage({
 
     const tween = gsap.fromTo(
       layer,
-      { yPercent: -10 },
+      { scale: 1.1 },
       {
-        yPercent: 10,
+        scale: 1,
         ease: "none",
         scrollTrigger: {
           trigger: wrapper,
@@ -49,7 +53,7 @@ export default function ParallaxImage({
 
   return (
     <div ref={wrapperRef} className={`relative overflow-hidden ${className ?? ""}`}>
-      <div ref={layerRef} className="absolute inset-x-0 -top-[20%] -bottom-[20%]">
+      <div ref={layerRef} className="absolute inset-0 origin-top">
         {children}
       </div>
     </div>
