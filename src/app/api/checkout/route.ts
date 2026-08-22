@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getProductBySlug } from "@/lib/products";
+import { getProductBySlug, patternLabels } from "@/lib/products";
 import { getStripe } from "@/lib/stripe";
 import type Stripe from "stripe";
 
 type CheckoutLine = {
   slug: string;
   size: string;
+  pattern: string;
   quantity: number;
 };
 
@@ -40,6 +41,12 @@ export async function POST(request: NextRequest) {
         { status: 400 },
       );
     }
+    if (!(product.designs as string[]).includes(line.pattern)) {
+      return NextResponse.json(
+        { error: `Invalid motif "${line.pattern}" for ${product.name}.` },
+        { status: 400 },
+      );
+    }
     const quantity = Math.floor(Number(line.quantity));
     if (!Number.isFinite(quantity) || quantity < 1 || quantity > MAX_QUANTITY_PER_LINE) {
       return NextResponse.json(
@@ -54,7 +61,7 @@ export async function POST(request: NextRequest) {
         currency: "myr",
         unit_amount: Math.round(product.priceMYR * 100),
         product_data: {
-          name: `${product.name} (${line.size})`,
+          name: `${product.name} — ${patternLabels[line.pattern as keyof typeof patternLabels]} (${line.size})`,
           description: product.description,
         },
       },

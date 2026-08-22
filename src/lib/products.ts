@@ -21,6 +21,8 @@ export type Product = {
   featured?: boolean;
   /** Path under /public to a real photoshoot image, used in place of the generated BatikSwatch pattern where set. */
   photo?: string;
+  /** Motifs this cut can be ordered in. The customer chooses one before adding to cart; `pattern` is just the first/signature option. */
+  designs: BatikPattern[];
 };
 
 export const patternLabels: Record<BatikPattern, string> = {
@@ -30,6 +32,26 @@ export const patternLabels: Record<BatikPattern, string> = {
   "sekar-jagad": "Sekar Jagad",
   truntum: "Truntum",
   "sido-mukti": "Sido Mukti",
+};
+
+/** One-line cultural meaning shown when a customer is choosing a motif. */
+export const patternMeanings: Record<BatikPattern, string> = {
+  parang: "Resilience — a diagonal motif traditionally worn as a symbol of strength.",
+  kawung: "Balance and purity — four overlapping ovals in a classic lattice.",
+  "mega-mendung": "Patience — indigo cloud forms, said to teach calm before the storm.",
+  "sekar-jagad": "Flowers of the world — a patchwork of regional motifs in one cloth.",
+  truntum: "A love that keeps growing — small star-like flowers scattered like a night sky.",
+  "sido-mukti": "Good fortune — traditionally reserved for celebrations.",
+};
+
+/** Representative colorway used to render a pattern in the motif picker, independent of any one product's own colorway. */
+export const patternColorways: Record<BatikPattern, [string, string]> = {
+  parang: ["#7a2e2e", "#d99a3d"],
+  kawung: ["#1f3a3d", "#c9b458"],
+  "mega-mendung": ["#1e3a5f", "#e8e2d0"],
+  "sekar-jagad": ["#8a3b1f", "#2c6e49"],
+  truntum: ["#2b2b2b", "#c94f4f"],
+  "sido-mukti": ["#4a1f3d", "#d4af37"],
 };
 
 export const products: Product[] = [
@@ -47,6 +69,7 @@ export const products: Product[] = [
     colorway: ["#7a2e2e", "#d99a3d"],
     featured: true,
     photo: "/products/pink-batik-top-skirt/rob01666.jpg",
+    designs: ["parang", "kawung", "mega-mendung", "truntum"],
   },
   {
     slug: "kota-batik-shirt",
@@ -62,6 +85,7 @@ export const products: Product[] = [
     colorway: ["#1f3a3d", "#c9b458"],
     featured: true,
     photo: "/products/colorful-mesh-blouse-blue-skirt/rob01656.jpg",
+    designs: ["kawung", "parang", "sekar-jagad", "sido-mukti"],
   },
   {
     slug: "awan_biru-batik-shirt",
@@ -75,6 +99,7 @@ export const products: Product[] = [
     sizes: ["S", "M", "L", "XL"],
     colorway: ["#1e3a5f", "#e8e2d0"],
     photo: "/products/blue-red-gold-brocade-gown/rob01895.jpg",
+    designs: ["mega-mendung", "truntum", "kawung", "sekar-jagad"],
   },
   {
     slug: "pasar-batik-shirt",
@@ -88,6 +113,7 @@ export const products: Product[] = [
     sizes: ["S", "M", "L", "XL"],
     colorway: ["#8a3b1f", "#2c6e49"],
     photo: "/products/gold-teal-peplum-set/rob00443.jpg",
+    designs: ["sekar-jagad", "parang", "mega-mendung", "sido-mukti"],
   },
   {
     slug: "malam-batik-dress",
@@ -102,6 +128,7 @@ export const products: Product[] = [
     colorway: ["#4a1f3d", "#d4af37"],
     featured: true,
     photo: "/products/blue-gold-batik-gown/rob02040.jpg",
+    designs: ["sido-mukti", "truntum", "parang", "kawung"],
   },
   {
     slug: "chinatown-batik-dress",
@@ -115,6 +142,7 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     colorway: ["#2b2b2b", "#c94f4f"],
     photo: "/products/black-red-floral-batik-dress/rob02244.jpg",
+    designs: ["truntum", "sido-mukti", "sekar-jagad", "mega-mendung"],
   },
   {
     slug: "lantera-batik-dress",
@@ -129,6 +157,7 @@ export const products: Product[] = [
     colorway: ["#16324f", "#f2e8c9"],
     featured: true,
     photo: "/products/gold-champagne-sash-dress/rob09258.jpg",
+    designs: ["mega-mendung", "sido-mukti", "truntum", "kawung"],
   },
   {
     slug: "warisan-batik-dress",
@@ -142,6 +171,7 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L"],
     colorway: ["#3d5a3d", "#e8c05a"],
     photo: "/products/yellow-gold-red-cape-set/rob09816.jpg",
+    designs: ["kawung", "sekar-jagad", "parang", "truntum"],
   },
 ];
 

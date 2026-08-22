@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import BatikSwatch from "@/components/BatikSwatch";
 import { useCart } from "@/lib/cart-context";
-import { formatMYR, getProductBySlug } from "@/lib/products";
+import { formatMYR, getProductBySlug, patternLabels } from "@/lib/products";
 
 export default function CartPage() {
   const { lines, removeLine, setQuantity, subtotalMYR } = useCart();
@@ -62,10 +62,10 @@ export default function CartPage() {
         {items.map(({ line, product }) => {
           if (!product) return null;
           return (
-            <div key={`${line.slug}-${line.size}`} className="flex gap-4 py-6">
+            <div key={`${line.slug}-${line.size}-${line.pattern}`} className="flex gap-4 py-6">
               <Link href={`/shop/${product.slug}`} className="h-24 w-24 shrink-0">
                 <BatikSwatch
-                  pattern={product.pattern}
+                  pattern={line.pattern}
                   colorway={product.colorway}
                   className="h-full w-full rounded-sm"
                 />
@@ -80,7 +80,7 @@ export default function CartPage() {
                       {product.name}
                     </Link>
                     <p className="text-sm text-[color:var(--color-ink)]/60">
-                      Size {line.size}
+                      {patternLabels[line.pattern]} Motif · Size {line.size}
                     </p>
                   </div>
                   <p className="whitespace-nowrap text-sm text-[color:var(--color-ink)]/80">
@@ -93,7 +93,7 @@ export default function CartPage() {
                       type="button"
                       aria-label="Decrease quantity"
                       onClick={() =>
-                        setQuantity(line.slug, line.size, line.quantity - 1)
+                        setQuantity(line.slug, line.size, line.pattern, line.quantity - 1)
                       }
                       className="h-8 w-8 rounded-sm border border-[color:var(--color-line)]"
                     >
@@ -104,7 +104,7 @@ export default function CartPage() {
                       type="button"
                       aria-label="Increase quantity"
                       onClick={() =>
-                        setQuantity(line.slug, line.size, line.quantity + 1)
+                        setQuantity(line.slug, line.size, line.pattern, line.quantity + 1)
                       }
                       className="h-8 w-8 rounded-sm border border-[color:var(--color-line)]"
                     >
@@ -113,7 +113,7 @@ export default function CartPage() {
                   </div>
                   <button
                     type="button"
-                    onClick={() => removeLine(line.slug, line.size)}
+                    onClick={() => removeLine(line.slug, line.size, line.pattern)}
                     className="text-xs uppercase tracking-wide text-[color:var(--color-ink)]/50 underline underline-offset-4 hover:text-[color:var(--color-terracotta)]"
                   >
                     Remove
