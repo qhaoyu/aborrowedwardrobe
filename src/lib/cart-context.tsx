@@ -9,12 +9,12 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { getProductBySlug, type BatikPattern } from "@/lib/products";
+import { getProductBySlug } from "@/lib/products";
 
 export type CartLine = {
   slug: string;
   size: string;
-  pattern: BatikPattern;
+  designSlug: string;
   quantity: number;
 };
 
@@ -23,14 +23,14 @@ type CartContextValue = {
   addItem: (
     slug: string,
     size: string,
-    pattern: BatikPattern,
+    designSlug: string,
     quantity?: number,
   ) => void;
-  removeLine: (slug: string, size: string, pattern: BatikPattern) => void;
+  removeLine: (slug: string, size: string, designSlug: string) => void;
   setQuantity: (
     slug: string,
     size: string,
-    pattern: BatikPattern,
+    designSlug: string,
     quantity: number,
   ) => void;
   clear: () => void;
@@ -62,40 +62,40 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [lines, hydrated]);
 
   const addItem = useCallback(
-    (slug: string, size: string, pattern: BatikPattern, quantity = 1) => {
+    (slug: string, size: string, designSlug: string, quantity = 1) => {
       setLines((prev) => {
         const existing = prev.find(
-          (l) => l.slug === slug && l.size === size && l.pattern === pattern,
+          (l) => l.slug === slug && l.size === size && l.designSlug === designSlug,
         );
         if (existing) {
           return prev.map((l) =>
-            l.slug === slug && l.size === size && l.pattern === pattern
+            l.slug === slug && l.size === size && l.designSlug === designSlug
               ? { ...l, quantity: l.quantity + quantity }
               : l,
           );
         }
-        return [...prev, { slug, size, pattern, quantity }];
+        return [...prev, { slug, size, designSlug, quantity }];
       });
     },
     [],
   );
 
-  const removeLine = useCallback((slug: string, size: string, pattern: BatikPattern) => {
+  const removeLine = useCallback((slug: string, size: string, designSlug: string) => {
     setLines((prev) =>
-      prev.filter((l) => !(l.slug === slug && l.size === size && l.pattern === pattern)),
+      prev.filter((l) => !(l.slug === slug && l.size === size && l.designSlug === designSlug)),
     );
   }, []);
 
   const setQuantity = useCallback(
-    (slug: string, size: string, pattern: BatikPattern, quantity: number) => {
+    (slug: string, size: string, designSlug: string, quantity: number) => {
       setLines((prev) => {
         if (quantity <= 0) {
           return prev.filter(
-            (l) => !(l.slug === slug && l.size === size && l.pattern === pattern),
+            (l) => !(l.slug === slug && l.size === size && l.designSlug === designSlug),
           );
         }
         return prev.map((l) =>
-          l.slug === slug && l.size === size && l.pattern === pattern
+          l.slug === slug && l.size === size && l.designSlug === designSlug
             ? { ...l, quantity }
             : l,
         );

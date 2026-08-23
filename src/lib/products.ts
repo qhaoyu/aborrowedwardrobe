@@ -21,8 +21,6 @@ export type Product = {
   featured?: boolean;
   /** Path under /public to a real photoshoot image, used in place of the generated BatikSwatch pattern where set. */
   photo?: string;
-  /** Motifs this cut can be ordered in. The customer chooses one before adding to cart; `pattern` is just the first/signature option. */
-  designs: BatikPattern[];
 };
 
 export const patternLabels: Record<BatikPattern, string> = {
@@ -44,15 +42,53 @@ export const patternMeanings: Record<BatikPattern, string> = {
   "sido-mukti": "Good fortune — traditionally reserved for celebrations.",
 };
 
-/** Representative colorway used to render a pattern in the motif picker, independent of any one product's own colorway. */
-export const patternColorways: Record<BatikPattern, [string, string]> = {
-  parang: ["#7a2e2e", "#d99a3d"],
-  kawung: ["#1f3a3d", "#c9b458"],
-  "mega-mendung": ["#1e3a5f", "#e8e2d0"],
-  "sekar-jagad": ["#8a3b1f", "#2c6e49"],
-  truntum: ["#2b2b2b", "#c94f4f"],
-  "sido-mukti": ["#4a1f3d", "#d4af37"],
+const allPatterns: BatikPattern[] = [
+  "parang",
+  "kawung",
+  "mega-mendung",
+  "sekar-jagad",
+  "truntum",
+  "sido-mukti",
+];
+
+/** The house's signature colorways, reused across every motif so the collection reads as one coordinated line. */
+const colorwayPalette: { name: string; colors: [string, string] }[] = [
+  { name: "Terracotta", colors: ["#7a2e2e", "#d99a3d"] },
+  { name: "Jade", colors: ["#1f3a3d", "#c9b458"] },
+  { name: "Indigo", colors: ["#1e3a5f", "#e8e2d0"] },
+  { name: "Harvest", colors: ["#8a3b1f", "#2c6e49"] },
+  { name: "Plum", colors: ["#4a1f3d", "#d4af37"] },
+];
+
+export type Design = {
+  slug: string;
+  motif: BatikPattern;
+  colorwayName: string;
+  colorway: [string, string];
+  /** Real fabric/print photo, once photographed and uploaded. Falls back to the generated BatikSwatch mockup where unset. */
+  photo?: string;
 };
+
+/**
+ * The full, shared catalogue of orderable motif + colorway combinations —
+ * every garment draws from the same library rather than each carrying its
+ * own curated shortlist, since the point is for customers to browse the
+ * whole collection. Generated as a cross product (motif × house colorway)
+ * so adding a new motif or colorway automatically expands every option;
+ * swap in a `photo` per entry as real photography comes in.
+ */
+export const designs: Design[] = allPatterns.flatMap((motif) =>
+  colorwayPalette.map(({ name, colors }) => ({
+    slug: `${motif}-${name.toLowerCase()}`,
+    motif,
+    colorwayName: name,
+    colorway: colors,
+  })),
+);
+
+export function getDesignBySlug(slug: string): Design | undefined {
+  return designs.find((d) => d.slug === slug);
+}
 
 export const products: Product[] = [
   {
@@ -69,7 +105,6 @@ export const products: Product[] = [
     colorway: ["#7a2e2e", "#d99a3d"],
     featured: true,
     photo: "/products/pink-batik-top-skirt/rob01666.jpg",
-    designs: ["parang", "kawung", "mega-mendung", "truntum"],
   },
   {
     slug: "kota-batik-shirt",
@@ -85,7 +120,6 @@ export const products: Product[] = [
     colorway: ["#1f3a3d", "#c9b458"],
     featured: true,
     photo: "/products/colorful-mesh-blouse-blue-skirt/rob01656.jpg",
-    designs: ["kawung", "parang", "sekar-jagad", "sido-mukti"],
   },
   {
     slug: "awan_biru-batik-shirt",
@@ -99,7 +133,6 @@ export const products: Product[] = [
     sizes: ["S", "M", "L", "XL"],
     colorway: ["#1e3a5f", "#e8e2d0"],
     photo: "/products/blue-red-gold-brocade-gown/rob01895.jpg",
-    designs: ["mega-mendung", "truntum", "kawung", "sekar-jagad"],
   },
   {
     slug: "pasar-batik-shirt",
@@ -113,7 +146,6 @@ export const products: Product[] = [
     sizes: ["S", "M", "L", "XL"],
     colorway: ["#8a3b1f", "#2c6e49"],
     photo: "/products/gold-teal-peplum-set/rob00443.jpg",
-    designs: ["sekar-jagad", "parang", "mega-mendung", "sido-mukti"],
   },
   {
     slug: "malam-batik-dress",
@@ -128,7 +160,6 @@ export const products: Product[] = [
     colorway: ["#4a1f3d", "#d4af37"],
     featured: true,
     photo: "/products/blue-gold-batik-gown/rob02040.jpg",
-    designs: ["sido-mukti", "truntum", "parang", "kawung"],
   },
   {
     slug: "chinatown-batik-dress",
@@ -142,7 +173,6 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     colorway: ["#2b2b2b", "#c94f4f"],
     photo: "/products/black-red-floral-batik-dress/rob02244.jpg",
-    designs: ["truntum", "sido-mukti", "sekar-jagad", "mega-mendung"],
   },
   {
     slug: "lantera-batik-dress",
@@ -157,7 +187,6 @@ export const products: Product[] = [
     colorway: ["#16324f", "#f2e8c9"],
     featured: true,
     photo: "/products/gold-champagne-sash-dress/rob09258.jpg",
-    designs: ["mega-mendung", "sido-mukti", "truntum", "kawung"],
   },
   {
     slug: "warisan-batik-dress",
@@ -171,7 +200,6 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L"],
     colorway: ["#3d5a3d", "#e8c05a"],
     photo: "/products/yellow-gold-red-cape-set/rob09816.jpg",
-    designs: ["kawung", "sekar-jagad", "parang", "truntum"],
   },
 ];
 

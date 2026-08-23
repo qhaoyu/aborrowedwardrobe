@@ -7,16 +7,16 @@ import BatikSwatch from "@/components/BatikSwatch";
 import DesignPicker from "@/components/DesignPicker";
 import { useCart } from "@/lib/cart-context";
 import {
+  designs,
   formatMYR,
-  patternColorways,
   patternLabels,
-  type BatikPattern,
+  type Design,
   type Product,
 } from "@/lib/products";
 
 export default function ProductConfigurator({ product }: { product: Product }) {
   const { addItem } = useCart();
-  const [pattern, setPattern] = useState<BatikPattern | null>(null);
+  const [design, setDesign] = useState<Design | null>(null);
   const [size, setSize] = useState(product.sizes[0]);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
@@ -46,13 +46,13 @@ export default function ProductConfigurator({ product }: { product: Product }) {
         {/* A wax-seal-style stamp that picks up the chosen motif, tying the photo to the choice on the right without pretending we have a photo of every combination. */}
         <div
           className={`absolute bottom-4 right-4 h-20 w-20 overflow-hidden rounded-full shadow-lg ring-4 ring-[color:var(--color-cream)] transition-transform duration-500 ${
-            pattern ? "scale-100" : "scale-0"
+            design ? "scale-100" : "scale-0"
           }`}
         >
-          {pattern && (
+          {design && (
             <BatikSwatch
-              pattern={pattern}
-              colorway={patternColorways[pattern]}
+              pattern={design.motif}
+              colorway={design.colorway}
               className="h-full w-full"
             />
           )}
@@ -61,7 +61,7 @@ export default function ProductConfigurator({ product }: { product: Product }) {
 
       <div>
         <p className="text-xs uppercase tracking-[0.15em] text-[color:var(--color-terracotta)]">
-          {pattern ? `${patternLabels[pattern]} Motif · ` : ""}
+          {design ? `${patternLabels[design.motif]} · ${design.colorwayName} · ` : ""}
           {product.category === "shirt" ? "Shirt" : "Dress"}
         </p>
         <h1 className="mt-2 font-serif text-3xl text-[color:var(--color-ink)] sm:text-4xl">
@@ -83,7 +83,7 @@ export default function ProductConfigurator({ product }: { product: Product }) {
             Choose Your Motif
           </p>
           <div className="mt-3">
-            <DesignPicker designs={product.designs} value={pattern} onChange={setPattern} />
+            <DesignPicker designs={designs} value={design} onChange={setDesign} />
           </div>
         </div>
 
@@ -138,10 +138,10 @@ export default function ProductConfigurator({ product }: { product: Product }) {
           <div className="flex flex-wrap items-center gap-4">
             <button
               type="button"
-              disabled={!pattern}
+              disabled={!design}
               onClick={() => {
-                if (!pattern) return;
-                addItem(product.slug, size, pattern, quantity);
+                if (!design) return;
+                addItem(product.slug, size, design.slug, quantity);
                 setAdded(true);
               }}
               className="rounded-sm bg-[color:var(--color-terracotta)] px-8 py-3 text-sm uppercase tracking-wide text-[color:var(--color-cream)] transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
@@ -157,7 +157,7 @@ export default function ProductConfigurator({ product }: { product: Product }) {
               </Link>
             )}
           </div>
-          {!pattern && (
+          {!design && (
             <p className="text-xs text-[color:var(--color-ink)]/50">
               Choose a motif above to add this piece to your cart.
             </p>
