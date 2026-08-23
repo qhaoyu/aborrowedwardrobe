@@ -104,7 +104,7 @@ export const products: Product[] = [
     sizes: ["S", "M", "L", "XL"],
     colorway: ["#7a2e2e", "#d99a3d"],
     featured: true,
-    photo: "/editorial/look-17/03.jpg",
+    photo: "/products/tops/black-gold/model.jpg",
   },
   {
     slug: "kota-batik-shirt",
@@ -119,7 +119,7 @@ export const products: Product[] = [
     sizes: ["S", "M", "L", "XL", "XXL"],
     colorway: ["#1f3a3d", "#c9b458"],
     featured: true,
-    photo: "/editorial/look-11/01.jpg",
+    photo: "/products/tops/sky-blue/flat.jpg",
   },
   {
     slug: "awan_biru-batik-shirt",
@@ -132,7 +132,7 @@ export const products: Product[] = [
     story: "A nod to the monsoon skies over the Klang Valley.",
     sizes: ["S", "M", "L", "XL"],
     colorway: ["#1e3a5f", "#e8e2d0"],
-    photo: "/editorial/look-09/01.jpg",
+    photo: "/products/tops/blue/model.jpg",
   },
   {
     slug: "pasar-batik-shirt",
@@ -145,7 +145,7 @@ export const products: Product[] = [
     story: "One shirt, many journeys — much like the market it's named for.",
     sizes: ["S", "M", "L", "XL"],
     colorway: ["#8a3b1f", "#2c6e49"],
-    photo: "/editorial/look-14/01.jpg",
+    photo: "/products/tops/green-white/model.jpg",
   },
   {
     slug: "malam-batik-dress",
