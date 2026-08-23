@@ -17,7 +17,7 @@ export default function Home() {
           aria-hidden
         >
           <Image
-            src="/products/red-black-gold-crown-dress/rob01756.jpg"
+            src="/editorial/look-19/01.jpg"
             alt=""
             fill
             priority
@@ -69,7 +69,7 @@ export default function Home() {
       <StoryBlock
         eyebrow="The Street"
         heading="They always stopped. They rarely bought."
-        photo="/products/black-draped-songket-skirt-set/rob09436.jpg"
+        photo="/editorial/look-03/01.jpg"
         photoAlt="A model in songket fabric in a Kuala Lumpur mural alley"
       >
         <p>
@@ -87,7 +87,7 @@ export default function Home() {
       <StoryBlock
         eyebrow="The Craft"
         heading="A story printed into every motif."
-        photo="/products/orange-batik-blazer-skirt/rob00938.jpg"
+        photo="/editorial/look-15/01.jpg"
         photoAlt="A model in a batik jacket near Central Market, Kuala Lumpur"
         reverse
       >
@@ -105,7 +105,7 @@ export default function Home() {
       <StoryBlock
         eyebrow="The Studio"
         heading="Above a shopfront, on the street itself."
-        photo="/products/white-floral-blue-cape-dress/rob08681.jpg"
+        photo="/editorial/look-22/01.jpg"
         photoAlt="A model in an embroidered cape dress in a Kuala Lumpur market"
       >
         <p>

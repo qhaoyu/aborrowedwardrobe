@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import BatikSwatch from "@/components/BatikSwatch";
 import { useCart } from "@/lib/cart-context";
-import { formatMYR, getProductBySlug, patternLabels } from "@/lib/products";
+import { formatMYR, getDesignBySlug, getProductBySlug, patternLabels } from "@/lib/products";
 
 export default function CartPage() {
   const { lines, removeLine, setQuantity, subtotalMYR } = useCart();
@@ -12,8 +12,12 @@ export default function CartPage() {
   const [error, setError] = useState<string | null>(null);
 
   const items = lines
-    .map((line) => ({ line, product: getProductBySlug(line.slug) }))
-    .filter((entry) => entry.product);
+    .map((line) => ({
+      line,
+      product: getProductBySlug(line.slug),
+      design: getDesignBySlug(line.designSlug),
+    }))
+    .filter((entry) => entry.product && entry.design);
 
   async function handleCheckout() {
     setLoading(true);
@@ -59,14 +63,14 @@ export default function CartPage() {
       <h1 className="font-serif text-3xl text-[color:var(--color-ink)]">Your Cart</h1>
 
       <div className="mt-8 flex flex-col divide-y divide-[color:var(--color-line)]">
-        {items.map(({ line, product }) => {
-          if (!product) return null;
+        {items.map(({ line, product, design }) => {
+          if (!product || !design) return null;
           return (
-            <div key={`${line.slug}-${line.size}-${line.pattern}`} className="flex gap-4 py-6">
+            <div key={`${line.slug}-${line.size}-${line.designSlug}`} className="flex gap-4 py-6">
               <Link href={`/shop/${product.slug}`} className="h-24 w-24 shrink-0">
                 <BatikSwatch
-                  pattern={line.pattern}
-                  colorway={product.colorway}
+                  pattern={design.motif}
+                  colorway={design.colorway}
                   className="h-full w-full rounded-sm"
                 />
               </Link>
@@ -80,7 +84,7 @@ export default function CartPage() {
                       {product.name}
                     </Link>
                     <p className="text-sm text-[color:var(--color-ink)]/60">
-                      {patternLabels[line.pattern]} Motif · Size {line.size}
+                      {patternLabels[design.motif]} · {design.colorwayName} · Size {line.size}
                     </p>
                   </div>
                   <p className="whitespace-nowrap text-sm text-[color:var(--color-ink)]/80">
@@ -93,7 +97,7 @@ export default function CartPage() {
                       type="button"
                       aria-label="Decrease quantity"
                       onClick={() =>
-                        setQuantity(line.slug, line.size, line.pattern, line.quantity - 1)
+                        setQuantity(line.slug, line.size, line.designSlug, line.quantity - 1)
                       }
                       className="h-8 w-8 rounded-sm border border-[color:var(--color-line)]"
                     >
@@ -104,7 +108,7 @@ export default function CartPage() {
                       type="button"
                       aria-label="Increase quantity"
                       onClick={() =>
-                        setQuantity(line.slug, line.size, line.pattern, line.quantity + 1)
+                        setQuantity(line.slug, line.size, line.designSlug, line.quantity + 1)
                       }
                       className="h-8 w-8 rounded-sm border border-[color:var(--color-line)]"
                     >
@@ -113,7 +117,7 @@ export default function CartPage() {
                   </div>
                   <button
                     type="button"
-                    onClick={() => removeLine(line.slug, line.size, line.pattern)}
+                    onClick={() => removeLine(line.slug, line.size, line.designSlug)}
                     className="text-xs uppercase tracking-wide text-[color:var(--color-ink)]/50 underline underline-offset-4 hover:text-[color:var(--color-terracotta)]"
                   >
                     Remove
