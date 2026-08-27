@@ -32,11 +32,12 @@ export default function AboutPage() {
             or the story behind what they were looking at.
           </p>
           <p>
-            We wanted to change that. Every shirt and dress we make is
-            block-printed with a traditional batik motif — parang, kawung,
-            mega mendung, truntum — and cut in modern, travel-friendly
-            silhouettes. Each piece comes with the story of its pattern, so
-            what you bring home means something beyond a souvenir.
+            We wanted to change that. Every shirt is block-printed with a
+            traditional batik motif — parang, kawung, mega mendung, truntum —
+            and our pants let you choose any print from our own house
+            collection, all cut in modern, travel-friendly silhouettes. Each
+            piece comes with the story of its pattern, so what you bring
+            home means something beyond a souvenir.
           </p>
           <p>
             Our studio sits above a shopfront in the middle of Chinatown,

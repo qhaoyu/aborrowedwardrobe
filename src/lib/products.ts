@@ -1,8 +1,7 @@
-export type ProductCategory = "shirt" | "dress" | "pants";
+export type ProductCategory = "shirt" | "pants";
 
 export const categoryLabels: Record<ProductCategory, string> = {
   shirt: "Shirt",
-  dress: "Dress",
   pants: "Pants",
 };
 
@@ -421,60 +420,6 @@ export const products: Product[] = [
     sizes: ["S", "M", "L", "XL"],
     colorway: ["#8a3b1f", "#2c6e49"],
     photo: "/products/tops/green-white/model.jpg",
-  },
-  {
-    slug: "malam-batik-dress",
-    name: "Malam Wrap Dress",
-    category: "dress",
-    pattern: "sido-mukti",
-    priceMYR: 259,
-    description:
-      "A flowing midi wrap dress in the sido mukti motif, traditionally reserved for celebrations and worn for good fortune.",
-    story: "For evenings that turn into stories worth retelling.",
-    sizes: ["XS", "S", "M", "L"],
-    colorway: ["#4a1f3d", "#d4af37"],
-    featured: true,
-    photo: "/editorial/look-05/01.jpg",
-  },
-  {
-    slug: "chinatown-batik-dress",
-    name: "Chinatown Shift Dress",
-    category: "dress",
-    pattern: "truntum",
-    priceMYR: 239,
-    description:
-      "A tailored shift dress in the truntum motif — small star-like flowers symbolising a love that keeps growing.",
-    story: "Cut for walking the five-foot ways of old Kuala Lumpur.",
-    sizes: ["XS", "S", "M", "L", "XL"],
-    colorway: ["#2b2b2b", "#c94f4f"],
-    photo: "/editorial/look-04/01.jpg",
-  },
-  {
-    slug: "lantera-batik-dress",
-    name: "Lantera Maxi Dress",
-    category: "dress",
-    pattern: "mega-mendung",
-    priceMYR: 279,
-    description:
-      "A floor-length maxi in cool indigo cloud tones, cut loose for the tropical heat with a fitted waist tie.",
-    story: "Named for the paper lanterns strung above Petaling Street at dusk.",
-    sizes: ["S", "M", "L"],
-    colorway: ["#16324f", "#f2e8c9"],
-    featured: true,
-    photo: "/editorial/look-13/01.jpg",
-  },
-  {
-    slug: "warisan-batik-dress",
-    name: "Warisan Sundress",
-    category: "dress",
-    pattern: "kawung",
-    priceMYR: 219,
-    description:
-      "A lightweight sundress with adjustable straps, printed in a classic kawung lattice for everyday wear.",
-    story: "Warisan means 'heritage' — worn forward, not just looked back on.",
-    sizes: ["XS", "S", "M", "L"],
-    colorway: ["#3d5a3d", "#e8c05a"],
-    photo: "/editorial/look-23/01.jpg",
   },
   {
     slug: "santai-pants",

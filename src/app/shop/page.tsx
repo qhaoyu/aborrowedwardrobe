@@ -4,7 +4,7 @@ import { products } from "@/lib/products";
 export const metadata = {
   title: "Shop | A Borrowed Wardrobe",
   description:
-    "Batik shirts and dresses designed on Petaling Street, Chinatown, Kuala Lumpur.",
+    "Batik shirts and pants designed on Petaling Street, Chinatown, Kuala Lumpur.",
 };
 
 type ShopPageProps = {
@@ -14,14 +14,13 @@ type ShopPageProps = {
 export default async function ShopPage({ searchParams }: ShopPageProps) {
   const { category } = await searchParams;
   const filtered =
-    category === "shirt" || category === "dress" || category === "pants"
+    category === "shirt" || category === "pants"
       ? products.filter((p) => p.category === category)
       : products;
 
   const tabs = [
     { key: undefined, label: "All" },
     { key: "shirt", label: "Shirts" },
-    { key: "dress", label: "Dresses" },
     { key: "pants", label: "Pants" },
   ] as const;
 
@@ -32,7 +31,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           The Collection
         </p>
         <h1 className="mt-2 font-serif text-3xl text-[color:var(--color-ink)] sm:text-4xl">
-          Shirts &amp; Dresses
+          Shirts &amp; Pants
         </h1>
         <p className="mt-3 max-w-xl text-sm text-[color:var(--color-ink)]/70">
           Hand-block-printed batik, cut for warm-weather travel. Every piece
