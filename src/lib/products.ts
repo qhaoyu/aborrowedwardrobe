@@ -233,6 +233,13 @@ export const designs: Design[] = [
     photo: "/fabrics/cream-maroon-dusty-blue-branch-floral.jpg",
   },
   {
+    slug: "kunang-melur",
+    motif: "kunang",
+    name: "Melur",
+    colorway: ["#ced1cc", "#929d8e"],
+    photo: "/fabrics/white-blue-orange-ditsy-floral.jpg",
+  },
+  {
     slug: "kelam-bayang",
     motif: "kelam",
     name: "Bayang",
