@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getDesignBySlug, getProductBySlug, patternLabels } from "@/lib/products";
+import { fabricMotifLabels, getDesignBySlug, getProductBySlug } from "@/lib/products";
 import { getStripe } from "@/lib/stripe";
 import type Stripe from "stripe";
 
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
         currency: "myr",
         unit_amount: Math.round(product.priceMYR * 100),
         product_data: {
-          name: `${product.name} — ${patternLabels[design.motif]} · ${design.colorwayName} (${line.size})`,
+          name: `${product.name} — ${fabricMotifLabels[design.motif]} · ${design.name} (${line.size})`,
           description: product.description,
         },
       },

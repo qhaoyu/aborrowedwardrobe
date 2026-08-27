@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import BatikSwatch from "@/components/BatikSwatch";
+import Image from "next/image";
 import TiltCard from "@/components/TiltCard";
 import {
-  patternLabels,
-  patternMeanings,
-  type BatikPattern,
+  fabricMotifLabels,
+  fabricMotifMeanings,
+  type FabricMotif,
   type Design,
 } from "@/lib/products";
 
@@ -20,11 +20,11 @@ export default function DesignPicker({
   onChange: (design: Design) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const [filter, setFilter] = useState<BatikPattern | "all">("all");
+  const [filter, setFilter] = useState<FabricMotif | "all">("all");
 
   const motifs = useMemo(() => {
-    const seen = new Set<BatikPattern>();
-    const list: BatikPattern[] = [];
+    const seen = new Set<FabricMotif>();
+    const list: FabricMotif[] = [];
     for (const d of designs) {
       if (!seen.has(d.motif)) {
         seen.add(d.motif);
@@ -56,9 +56,9 @@ export default function DesignPicker({
         onClick={() => setOpen(true)}
         className="flex w-full items-center gap-4 rounded-sm border border-[color:var(--color-line)] p-3 text-left transition-colors hover:border-[color:var(--color-terracotta)]"
       >
-        <div className="h-14 w-14 shrink-0 overflow-hidden rounded-sm">
+        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-sm">
           {value ? (
-            <BatikSwatch pattern={value.motif} colorway={value.colorway} className="h-full w-full" />
+            <Image src={value.photo} alt={`${fabricMotifLabels[value.motif]} — ${value.name} fabric`} fill sizes="56px" className="object-cover" />
           ) : (
             <div className="h-full w-full bg-[color:var(--color-line)]" />
           )}
@@ -67,13 +67,13 @@ export default function DesignPicker({
           {value ? (
             <>
               <p className="text-sm font-medium text-[color:var(--color-ink)]">
-                {patternLabels[value.motif]} · {value.colorwayName}
+                {fabricMotifLabels[value.motif]} · {value.name}
               </p>
               <p className="text-xs text-[color:var(--color-ink)]/60">Tap to change</p>
             </>
           ) : (
             <p className="text-sm font-medium text-[color:var(--color-terracotta)]">
-              Browse all {designs.length} motifs →
+              Browse all {designs.length} prints →
             </p>
           )}
         </div>
@@ -95,9 +95,9 @@ export default function DesignPicker({
             <div className="flex items-center justify-between border-b border-[color:var(--color-line)] px-5 py-4">
               <div>
                 <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-terracotta)]">
-                  {designs.length} Motifs
+                  {designs.length} Prints
                 </p>
-                <h2 className="font-serif text-xl text-[color:var(--color-ink)]">Choose Your Motif</h2>
+                <h2 className="font-serif text-xl text-[color:var(--color-ink)]">Choose Your Print</h2>
               </div>
               <button
                 type="button"
@@ -132,7 +132,7 @@ export default function DesignPicker({
                       : "border-[color:var(--color-line)] text-[color:var(--color-ink)]/70 hover:border-[color:var(--color-terracotta)]"
                   }`}
                 >
-                  {patternLabels[m]}
+                  {fabricMotifLabels[m]}
                 </button>
               ))}
             </div>
@@ -159,10 +159,12 @@ export default function DesignPicker({
                       }`}
                     >
                       <div className="relative aspect-square w-full">
-                        <BatikSwatch
-                          pattern={design.motif}
-                          colorway={design.colorway}
-                          className="h-full w-full"
+                        <Image
+                          src={design.photo}
+                          alt={`${fabricMotifLabels[design.motif]} — ${design.name} fabric`}
+                          fill
+                          sizes="(min-width: 768px) 25vw, 50vw"
+                          className="object-cover"
                         />
                         {selected && (
                           <div
@@ -177,7 +179,7 @@ export default function DesignPicker({
                       </div>
                     </TiltCard>
                     <p className="mt-1.5 text-xs font-medium text-[color:var(--color-ink)]">
-                      {patternLabels[design.motif]} · {design.colorwayName}
+                      {fabricMotifLabels[design.motif]} · {design.name}
                     </p>
                   </button>
                 );
@@ -186,7 +188,7 @@ export default function DesignPicker({
 
             {value && (
               <p className="border-t border-[color:var(--color-line)] px-5 py-3 text-xs leading-snug text-[color:var(--color-ink)]/60">
-                {patternLabels[value.motif]} — {patternMeanings[value.motif]}
+                {fabricMotifLabels[value.motif]} — {fabricMotifMeanings[value.motif]}
               </p>
             )}
           </div>

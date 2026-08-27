@@ -8,8 +8,8 @@ import DesignPicker from "@/components/DesignPicker";
 import { useCart } from "@/lib/cart-context";
 import {
   designs,
+  fabricMotifLabels,
   formatMYR,
-  patternLabels,
   type Design,
   type Product,
 } from "@/lib/products";
@@ -43,17 +43,19 @@ export default function ProductConfigurator({ product }: { product: Product }) {
           />
         )}
 
-        {/* A wax-seal-style stamp that picks up the chosen motif, tying the photo to the choice on the right without pretending we have a photo of every combination. */}
+        {/* A wax-seal-style stamp that picks up the chosen print, tying the hero photo to the fabric choice on the right. */}
         <div
           className={`absolute bottom-4 right-4 h-20 w-20 overflow-hidden rounded-full shadow-lg ring-4 ring-[color:var(--color-cream)] transition-transform duration-500 ${
             design ? "scale-100" : "scale-0"
           }`}
         >
           {design && (
-            <BatikSwatch
-              pattern={design.motif}
-              colorway={design.colorway}
-              className="h-full w-full"
+            <Image
+              src={design.photo}
+              alt={`${fabricMotifLabels[design.motif]} — ${design.name}`}
+              fill
+              sizes="80px"
+              className="object-cover"
             />
           )}
         </div>
@@ -61,7 +63,7 @@ export default function ProductConfigurator({ product }: { product: Product }) {
 
       <div>
         <p className="text-xs uppercase tracking-[0.15em] text-[color:var(--color-terracotta)]">
-          {design ? `${patternLabels[design.motif]} · ${design.colorwayName} · ` : ""}
+          {design ? `${fabricMotifLabels[design.motif]} · ${design.name} · ` : ""}
           {product.category === "shirt" ? "Shirt" : "Dress"}
         </p>
         <h1 className="mt-2 font-serif text-3xl text-[color:var(--color-ink)] sm:text-4xl">
@@ -80,7 +82,7 @@ export default function ProductConfigurator({ product }: { product: Product }) {
 
         <div className="mt-8">
           <p className="text-xs uppercase tracking-[0.15em] text-[color:var(--color-ink)]/60">
-            Choose Your Motif
+            Choose Your Print
           </p>
           <div className="mt-3">
             <DesignPicker designs={designs} value={design} onChange={setDesign} />
@@ -159,7 +161,7 @@ export default function ProductConfigurator({ product }: { product: Product }) {
           </div>
           {!design && (
             <p className="text-xs text-[color:var(--color-ink)]/50">
-              Choose a motif above to add this piece to your cart.
+              Choose a print above to add this piece to your cart.
             </p>
           )}
         </div>
