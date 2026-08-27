@@ -14,7 +14,7 @@ type ShopPageProps = {
 export default async function ShopPage({ searchParams }: ShopPageProps) {
   const { category } = await searchParams;
   const filtered =
-    category === "shirt" || category === "dress"
+    category === "shirt" || category === "dress" || category === "pants"
       ? products.filter((p) => p.category === category)
       : products;
 
@@ -22,6 +22,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
     { key: undefined, label: "All" },
     { key: "shirt", label: "Shirts" },
     { key: "dress", label: "Dresses" },
+    { key: "pants", label: "Pants" },
   ] as const;
 
   return (

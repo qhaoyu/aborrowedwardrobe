@@ -1,4 +1,10 @@
-export type ProductCategory = "shirt" | "dress";
+export type ProductCategory = "shirt" | "dress" | "pants";
+
+export const categoryLabels: Record<ProductCategory, string> = {
+  shirt: "Shirt",
+  dress: "Dress",
+  pants: "Pants",
+};
 
 export type BatikPattern =
   | "parang"
@@ -12,7 +18,14 @@ export type Product = {
   slug: string;
   name: string;
   category: ProductCategory;
-  pattern: BatikPattern;
+  /**
+   * The garment's own signature traditional motif, where it has one fixed
+   * print baked into the listing. Unset for a garment (like the pants
+   * below) whose whole point is that the customer picks any print from the
+   * shared collection — forcing one of these six names on it would be the
+   * same unverifiable claim the fabric library moved away from.
+   */
+  pattern?: BatikPattern;
   priceMYR: number;
   description: string;
   story: string;
@@ -21,6 +34,8 @@ export type Product = {
   featured?: boolean;
   /** Path under /public to a real photoshoot image, used in place of the generated BatikSwatch pattern where set. */
   photo?: string;
+  /** Additional reference photos (other cuts, flat lay vs. worn) shown alongside `photo` for garments offered in more than one shot. */
+  gallery?: string[];
 };
 
 export const patternLabels: Record<BatikPattern, string> = {
@@ -460,6 +475,28 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L"],
     colorway: ["#3d5a3d", "#e8c05a"],
     photo: "/editorial/look-23/01.jpg",
+  },
+  {
+    slug: "santai-pants",
+    name: "Santai Pants",
+    category: "pants",
+    priceMYR: 229,
+    description:
+      "Batik trousers cut two ways — a wide-leg palazzo and a gathered harem, both finished with an easy elastic waist. Pick the fit here, then choose any print from the full collection to have it printed in.",
+    story:
+      "Santai means unhurried — the pace of a Sunday on Petaling Street, wide-legged and unbothered by the heat.",
+    sizes: ["S", "M", "L", "XL"],
+    colorway: ["#2e1f1c", "#c23a6a"],
+    featured: true,
+    photo: "/products/pants/pink/model.jpg",
+    gallery: [
+      "/products/pants/pink/model.jpg",
+      "/products/pants/pink/flat.jpg",
+      "/products/pants/purple/model.jpg",
+      "/products/pants/purple/flat.jpg",
+      "/products/pants/red-green/model.jpg",
+      "/products/pants/red-green/flat.jpg",
+    ],
   },
 ];
 

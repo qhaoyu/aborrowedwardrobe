@@ -20,12 +20,14 @@ export default function ProductCard({ product }: { product: Product }) {
               sizes="(min-width: 768px) 25vw, 50vw"
               className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110"
             />
-          ) : (
+          ) : product.pattern ? (
             <BatikSwatch
               pattern={product.pattern}
               colorway={product.colorway}
               className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-110"
             />
+          ) : (
+            <div className="h-full w-full bg-[color:var(--color-line)]" />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)]/70 via-[color:var(--color-ink)]/0 to-transparent opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100" />
           <span className="absolute inset-x-0 bottom-4 mx-auto w-fit translate-y-3 rounded-full bg-[color:var(--color-cream)] px-4 py-1.5 text-xs uppercase tracking-[0.15em] text-[color:var(--color-ink)] opacity-0 shadow-md transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
@@ -33,9 +35,11 @@ export default function ProductCard({ product }: { product: Product }) {
           </span>
         </div>
         <div className="flex flex-1 flex-col gap-1 p-4">
-          <p className="text-xs uppercase tracking-[0.15em] text-[color:var(--color-terracotta)]">
-            {patternLabels[product.pattern]} Motif
-          </p>
+          {product.pattern && (
+            <p className="text-xs uppercase tracking-[0.15em] text-[color:var(--color-terracotta)]">
+              {patternLabels[product.pattern]} Motif
+            </p>
+          )}
           <h3 className="font-serif text-lg text-[color:var(--color-ink)]">
             {product.name}
           </h3>

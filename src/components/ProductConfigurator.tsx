@@ -7,6 +7,7 @@ import BatikSwatch from "@/components/BatikSwatch";
 import DesignPicker from "@/components/DesignPicker";
 import { useCart } from "@/lib/cart-context";
 import {
+  categoryLabels,
   designs,
   fabricMotifLabels,
   formatMYR,
@@ -20,28 +21,32 @@ export default function ProductConfigurator({ product }: { product: Product }) {
   const [size, setSize] = useState(product.sizes[0]);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+  const [activePhoto, setActivePhoto] = useState(product.gallery?.[0] ?? product.photo);
 
   return (
     <div className="grid gap-10 md:grid-cols-2">
-      <div className="relative">
-        {product.photo ? (
-          <div className="relative aspect-[2/3] w-full overflow-hidden rounded-sm shadow-md">
-            <Image
-              src={product.photo}
-              alt={product.name}
-              fill
-              sizes="(min-width: 768px) 50vw, 100vw"
-              priority
-              className="object-cover object-top"
+      <div>
+        <div className="relative">
+          {activePhoto ? (
+            <div className="relative aspect-[2/3] w-full overflow-hidden rounded-sm shadow-md">
+              <Image
+                src={activePhoto}
+                alt={product.name}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                priority
+                className="object-cover object-top"
+              />
+            </div>
+          ) : product.pattern ? (
+            <BatikSwatch
+              pattern={product.pattern}
+              colorway={product.colorway}
+              className="aspect-square w-full rounded-sm shadow-md"
             />
-          </div>
-        ) : (
-          <BatikSwatch
-            pattern={product.pattern}
-            colorway={product.colorway}
-            className="aspect-square w-full rounded-sm shadow-md"
-          />
-        )}
+          ) : (
+            <div className="aspect-square w-full rounded-sm bg-[color:var(--color-line)] shadow-md" />
+          )}
 
         {/* A wax-seal-style stamp that picks up the chosen print, tying the hero photo to the fabric choice on the right. */}
         <div
@@ -59,12 +64,34 @@ export default function ProductConfigurator({ product }: { product: Product }) {
             />
           )}
         </div>
+        </div>
+
+        {product.gallery && product.gallery.length > 1 && (
+          <div className="mt-3 grid grid-cols-6 gap-2">
+            {product.gallery.map((photo) => (
+              <button
+                key={photo}
+                type="button"
+                onClick={() => setActivePhoto(photo)}
+                aria-label="Show this view"
+                aria-pressed={activePhoto === photo}
+                className={`relative aspect-square overflow-hidden rounded-sm border transition-colors ${
+                  activePhoto === photo
+                    ? "border-[color:var(--color-terracotta)]"
+                    : "border-[color:var(--color-line)] hover:border-[color:var(--color-terracotta)]/50"
+                }`}
+              >
+                <Image src={photo} alt="" fill sizes="80px" className="object-cover object-top" />
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <div>
         <p className="text-xs uppercase tracking-[0.15em] text-[color:var(--color-terracotta)]">
           {design ? `${fabricMotifLabels[design.motif]} · ${design.name} · ` : ""}
-          {product.category === "shirt" ? "Shirt" : "Dress"}
+          {categoryLabels[product.category]}
         </p>
         <h1 className="mt-2 font-serif text-3xl text-[color:var(--color-ink)] sm:text-4xl">
           {product.name}
