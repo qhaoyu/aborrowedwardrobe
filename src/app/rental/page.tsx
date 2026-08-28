@@ -1,5 +1,7 @@
-import BatikSwatch from "@/components/BatikSwatch";
+import Image from "next/image";
+import CostumeGallery from "@/components/CostumeGallery";
 import RentalInterestForm from "@/components/RentalInterestForm";
+import { costumes } from "@/lib/costumes";
 
 export const metadata = {
   title: "Wardrobe Rental (Coming Soon) | A Borrowed Wardrobe",
@@ -67,18 +69,34 @@ export default function RentalPage() {
         </div>
       </section>
 
+      <section className="border-t border-[color:var(--color-line)] px-5 py-16 sm:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-10 max-w-2xl">
+            <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-terracotta)]">
+              The Wardrobe
+            </p>
+            <h2 className="mt-2 font-serif text-3xl text-[color:var(--color-ink)] sm:text-4xl">
+              {costumes.length} Looks, Shot Around Petaling Street
+            </h2>
+            <p className="mt-3 text-sm text-[color:var(--color-ink)]/70">
+              Every costume we&apos;ll have ready to rent, photographed on
+              location around Chinatown and Kuala Lumpur. Tap a look for the
+              full set of photos.
+            </p>
+          </div>
+          <CostumeGallery costumes={costumes} />
+        </div>
+      </section>
+
       <section className="border-t border-[color:var(--color-line)] bg-white/40">
         <div className="mx-auto grid max-w-5xl gap-10 px-5 py-16 sm:px-8 md:grid-cols-2 md:items-center">
-          <div className="grid grid-cols-2 gap-4">
-            <BatikSwatch
-              pattern="mega-mendung"
-              colorway={["#16324f", "#f2e8c9"]}
-              className="aspect-[3/4] w-full rounded-sm shadow-md"
-            />
-            <BatikSwatch
-              pattern="sido-mukti"
-              colorway={["#4a1f3d", "#d4af37"]}
-              className="mt-8 aspect-[3/4] w-full rounded-sm shadow-md"
+          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm shadow-md">
+            <Image
+              src="/editorial/look-15/01.jpg"
+              alt="A model in a batik jacket and orange skirt at Kasturi Walk, Kuala Lumpur"
+              fill
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="object-cover"
             />
           </div>
           <div>
