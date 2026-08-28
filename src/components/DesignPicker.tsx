@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import { useLenis } from "lenis/react";
 import TiltCard from "@/components/TiltCard";
 import {
   fabricMotifLabels,
@@ -36,18 +37,33 @@ export default function DesignPicker({
 
   const visible = filter === "all" ? designs : designs.filter((d) => d.motif === filter);
 
+  const lenis = useLenis();
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
     document.addEventListener("keydown", onKey);
+    // Locking body alone doesn't stop the page scrolling here: Lenis (see
+    // SmoothScrollProvider) drives the whole document's scroll itself from
+    // global wheel/touch listeners, entirely independent of CSS overflow —
+    // it has to be told to stop, or every scroll over the modal still
+    // scrolls the page underneath it. The CSS lock stays too, as a fallback
+    // for the moment before Lenis has mounted.
+    lenis?.stop();
+    const { documentElement } = document;
+    const previousHtmlOverflow = documentElement.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
+      lenis?.start();
+      documentElement.style.overflow = previousHtmlOverflow;
+      document.body.style.overflow = previousBodyOverflow;
     };
-  }, [open]);
+  }, [open, lenis]);
 
   return (
     <>
@@ -137,7 +153,10 @@ export default function DesignPicker({
               ))}
             </div>
 
-            <div className="grid grow grid-cols-2 gap-3 overflow-y-auto p-5 sm:grid-cols-3 md:grid-cols-4">
+            <div
+              data-lenis-prevent
+              className="grid min-h-0 grow grid-cols-2 gap-3 overflow-y-auto overscroll-contain p-5 sm:grid-cols-3 md:grid-cols-4"
+            >
               {visible.map((design) => {
                 const selected = value?.slug === design.slug;
                 return (

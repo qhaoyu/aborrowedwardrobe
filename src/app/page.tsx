@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import ProductCard from "@/components/ProductCard";
+import CategoryTile from "@/components/CategoryTile";
 import ScrollReveal from "@/components/ScrollReveal";
 import StoryBlock from "@/components/StoryBlock";
 import { products } from "@/lib/products";
@@ -145,10 +145,10 @@ export default function Home() {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
           {featured.map((product, i) => (
             <ScrollReveal key={product.slug} delay={i * 80}>
-              <ProductCard product={product} />
+              <CategoryTile product={product} />
             </ScrollReveal>
           ))}
         </div>
