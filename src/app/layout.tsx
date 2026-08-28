@@ -19,9 +19,9 @@ const body = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: "A Borrowed Wardrobe | Batik Shirts & Pants, Petaling Street KL",
+  title: "A Borrowed Wardrobe | Batik Tops, Pants & Sweaters, Petaling Street KL",
   description:
-    "Batik shirts and pants designed and sold from Petaling Street, Chinatown, Kuala Lumpur. Shop the collection, learn the story behind the prints.",
+    "Batik tops, pants, and sweaters designed and sold from Petaling Street, Chinatown, Kuala Lumpur. Shop the collection, learn the story behind the prints.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

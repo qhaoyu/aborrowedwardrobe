@@ -40,7 +40,7 @@ export default async function PrintsPage({ searchParams }: PrintsPageProps) {
         </h1>
         <p className="mt-3 text-sm text-[color:var(--color-ink)]/70">
           Real batik, photographed swatch by swatch — the same {designs.length} prints you&apos;ll
-          choose from when you pick a shirt or a pair of pants. Sorted by hand into six families rather than
+          choose from when you pick a top, pants, or a sweater. Sorted by hand into six families rather than
           claimed against traditional motif names we can&apos;t verify from a photo alone.
         </p>
       </div>
@@ -108,7 +108,7 @@ export default async function PrintsPage({ searchParams }: PrintsPageProps) {
 
       <div className="mt-14 flex flex-col items-start gap-3 border-t border-[color:var(--color-line)] pt-8 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-[color:var(--color-ink)]/70">
-          Every print here is available on any shirt or pair of pants in the shop.
+          Every print here is available on any piece in the shop.
         </p>
         <Link
           href="/shop"

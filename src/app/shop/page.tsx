@@ -1,67 +1,59 @@
-import ProductCard from "@/components/ProductCard";
-import { products } from "@/lib/products";
+import Image from "next/image";
+import Link from "next/link";
+import TiltCard from "@/components/TiltCard";
+import { formatMYR, products } from "@/lib/products";
 
 export const metadata = {
   title: "Shop | A Borrowed Wardrobe",
   description:
-    "Batik shirts and pants designed on Petaling Street, Chinatown, Kuala Lumpur.",
+    "Batik tops, pants, and sweaters designed on Petaling Street, Chinatown, Kuala Lumpur.",
 };
 
-type ShopPageProps = {
-  searchParams: Promise<{ category?: string }>;
-};
-
-export default async function ShopPage({ searchParams }: ShopPageProps) {
-  const { category } = await searchParams;
-  const filtered =
-    category === "shirt" || category === "pants"
-      ? products.filter((p) => p.category === category)
-      : products;
-
-  const tabs = [
-    { key: undefined, label: "All" },
-    { key: "shirt", label: "Shirts" },
-    { key: "pants", label: "Pants" },
-  ] as const;
-
+export default function ShopPage() {
   return (
     <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-      <div className="mb-10">
+      <div className="mb-12 max-w-xl">
         <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-terracotta)]">
           The Collection
         </p>
         <h1 className="mt-2 font-serif text-3xl text-[color:var(--color-ink)] sm:text-4xl">
-          Shirts &amp; Pants
+          Shop by Category
         </h1>
-        <p className="mt-3 max-w-xl text-sm text-[color:var(--color-ink)]/70">
-          Hand-block-printed batik, cut for warm-weather travel. Every piece
-          ships from our studio on Petaling Street.
+        <p className="mt-3 text-sm text-[color:var(--color-ink)]/70">
+          Hand-block-printed batik, cut for warm-weather travel. Pick a
+          piece, then choose any print from the full collection.
         </p>
       </div>
 
-      <div className="mb-8 flex gap-3">
-        {tabs.map((tab) => {
-          const href = tab.key ? `/shop?category=${tab.key}` : "/shop";
-          const active = category === tab.key || (!category && !tab.key);
-          return (
-            <a
-              key={tab.label}
-              href={href}
-              className={`rounded-full border px-4 py-1.5 text-sm uppercase tracking-wide transition-colors ${
-                active
-                  ? "border-[color:var(--color-terracotta)] bg-[color:var(--color-terracotta)] text-[color:var(--color-cream)]"
-                  : "border-[color:var(--color-line)] text-[color:var(--color-ink)]/70 hover:border-[color:var(--color-terracotta)]"
-              }`}
-            >
-              {tab.label}
-            </a>
-          );
-        })}
-      </div>
-
-      <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
-        {filtered.map((product) => (
-          <ProductCard key={product.slug} product={product} />
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+        {products.map((product) => (
+          <Link key={product.slug} href={`/shop/${product.slug}`} className="group block">
+            <TiltCard className="overflow-hidden rounded-sm border border-[color:var(--color-line)] shadow-md transition-shadow duration-500 ease-out group-hover:shadow-xl">
+              <div className="relative aspect-[3/4] w-full overflow-hidden">
+                {product.photo && (
+                  <Image
+                    src={product.photo}
+                    alt={product.name}
+                    fill
+                    sizes="(min-width: 640px) 33vw, 100vw"
+                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)]/70 via-[color:var(--color-ink)]/0 to-transparent opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100" />
+                <span className="absolute inset-x-0 bottom-6 mx-auto w-fit translate-y-3 rounded-full bg-[color:var(--color-cream)] px-5 py-2 text-xs uppercase tracking-[0.15em] text-[color:var(--color-ink)] opacity-0 shadow-md transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+                  Shop Now
+                </span>
+              </div>
+            </TiltCard>
+            <div className="mt-4">
+              <h2 className="font-serif text-2xl text-[color:var(--color-ink)] sm:text-3xl">
+                {product.name}
+              </h2>
+              <p className="mt-1 text-sm text-[color:var(--color-ink)]/70">
+                From {formatMYR(product.priceMYR)}
+              </p>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

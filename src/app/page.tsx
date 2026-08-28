@@ -37,7 +37,7 @@ export default function Home() {
             Wear the street you wandered.
           </h1>
           <p className="mt-6 max-w-md text-base leading-relaxed text-[color:var(--color-ink)]/75">
-            A Borrowed Wardrobe designs batik shirts and pants out of a
+            A Borrowed Wardrobe designs batik tops, pants, and sweaters out of a
             small studio in the middle of Petaling Street — for travellers
             who want to carry a piece of Kuala Lumpur home with them.
           </p>
@@ -92,14 +92,14 @@ export default function Home() {
         reverse
       >
         <p>
-          We wanted to change that. Every shirt is block-printed with a
-          traditional batik motif, and our pants let you choose any print
-          from our own house collection — all cut in modern,
-          travel-friendly silhouettes.
+          We wanted to change that. Every piece — top, trousers, or
+          sweater — is hand-block-printed batik, cut in modern,
+          travel-friendly silhouettes. Pick the piece, then choose any
+          print from our own house collection.
         </p>
         <p className="italic text-[color:var(--color-ink)]/85">
-          &ldquo;Parang for resilience, kawung for balance, truntum for a
-          love that keeps growing.&rdquo;
+          &ldquo;Arus for movement, Pasar for many patterns in one cloth,
+          Kunang for the quiet print instead of the loud one.&rdquo;
         </p>
       </StoryBlock>
 
@@ -129,7 +129,7 @@ export default function Home() {
                 The Collection
               </p>
               <h2 className="mt-2 font-serif text-3xl text-[color:var(--color-ink)] sm:text-4xl">
-                Shirts &amp; Pants
+                Shop by Category
               </h2>
               <p className="mt-3 max-w-md text-sm leading-relaxed text-[color:var(--color-ink)]/70">
                 Hand-block-printed batik, cut for warm-weather travel. Every
@@ -172,7 +172,7 @@ export default function Home() {
                 Coming Soon
               </p>
               <h2 className="mt-2 font-serif text-3xl">
-                Borrow a costume, not just a shirt.
+                Borrow a costume, not just an outfit.
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-cream)]/80">
                 We&apos;re building a rental experience for tourists — dress

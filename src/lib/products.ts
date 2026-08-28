@@ -1,8 +1,9 @@
-export type ProductCategory = "shirt" | "pants";
+export type ProductCategory = "top" | "pants" | "sweater";
 
 export const categoryLabels: Record<ProductCategory, string> = {
-  shirt: "Shirt",
-  pants: "Pants",
+  top: "Batik Top",
+  pants: "Batik Pants",
+  sweater: "Batik Sweater",
 };
 
 export type BatikPattern =
@@ -364,72 +365,46 @@ export function getDesignBySlug(slug: string): Design | undefined {
   return designs.find((d) => d.slug === slug);
 }
 
+/**
+ * Exactly one listing per category — no individual product names or
+ * per-piece stories. Each one's own gallery groups every photo shot for
+ * that category (flat lay and worn, every colorway tried so far); the
+ * actual print is chosen from the shared collection on the product page,
+ * same as before.
+ */
 export const products: Product[] = [
   {
-    slug: "senja-batik-shirt",
-    name: "Senja Shirt",
-    category: "shirt",
-    pattern: "parang",
-    priceMYR: 189,
-    description:
-      "A relaxed, breathable short-sleeve shirt hand-block-printed in a diagonal parang motif — traditionally worn to symbolise resilience.",
-    story:
-      "Named for the golden hour over Petaling Street, when lantern light meets the last of the sun.",
-    sizes: ["S", "M", "L", "XL"],
-    colorway: ["#7a2e2e", "#d99a3d"],
-    featured: true,
-    photo: "/products/tops/black-gold/model.jpg",
-  },
-  {
-    slug: "kota-batik-shirt",
-    name: "Kota Shirt",
-    category: "shirt",
-    pattern: "kawung",
+    slug: "batik-top",
+    name: "Batik Top",
+    category: "top",
     priceMYR: 199,
     description:
-      "Structured cotton shirt in the kawung motif — four overlapping ovals said to represent balance and purity.",
-    story:
-      "Inspired by the geometry of shophouse tiles along Jalan Petaling.",
-    sizes: ["S", "M", "L", "XL", "XXL"],
-    colorway: ["#1f3a3d", "#c9b458"],
+      "Short-sleeve batik shirts, hand-block-printed and cut for warm-weather travel. Pick the print from the full collection.",
+    story: "Hand-block-printed in our Petaling Street studio, piece by piece.",
+    sizes: ["S", "M", "L", "XL"],
+    colorway: ["#1c2340", "#c9a13a"],
     featured: true,
-    photo: "/products/tops/sky-blue/flat.jpg",
+    photo: "/products/tops/black-gold/model.jpg",
+    gallery: [
+      "/products/tops/black-gold/model.jpg",
+      "/products/tops/blue/model.jpg",
+      "/products/tops/blue/flat.jpg",
+      "/products/tops/bright-blue/model.jpg",
+      "/products/tops/bright-blue/flat.jpg",
+      "/products/tops/dark-gold/flat.jpg",
+      "/products/tops/green-white/model.jpg",
+      "/products/tops/green-white/flat.jpg",
+      "/products/tops/sky-blue/flat.jpg",
+    ],
   },
   {
-    slug: "awan_biru-batik-shirt",
-    name: "Awan Biru Shirt",
-    category: "shirt",
-    pattern: "mega-mendung",
-    priceMYR: 209,
-    description:
-      "Indigo cloud-motif shirt in a soft viscose blend — mega mendung patterns are said to teach patience, like clouds before rain.",
-    story: "A nod to the monsoon skies over the Klang Valley.",
-    sizes: ["S", "M", "L", "XL"],
-    colorway: ["#1e3a5f", "#e8e2d0"],
-    photo: "/products/tops/blue/model.jpg",
-  },
-  {
-    slug: "pasar-batik-shirt",
-    name: "Pasar Shirt",
-    category: "shirt",
-    pattern: "sekar-jagad",
-    priceMYR: 195,
-    description:
-      "A patchwork-style print combining several regional motifs — sekar jagad translates roughly to 'flowers of the world.'",
-    story: "One shirt, many journeys — much like the market it's named for.",
-    sizes: ["S", "M", "L", "XL"],
-    colorway: ["#8a3b1f", "#2c6e49"],
-    photo: "/products/tops/green-white/model.jpg",
-  },
-  {
-    slug: "santai-pants",
-    name: "Santai Pants",
+    slug: "batik-pants",
+    name: "Batik Pants",
     category: "pants",
     priceMYR: 229,
     description:
-      "Batik trousers cut two ways — a wide-leg palazzo and a gathered harem, both finished with an easy elastic waist. Pick the fit here, then choose any print from the full collection to have it printed in.",
-    story:
-      "Santai means unhurried — the pace of a Sunday on Petaling Street, wide-legged and unbothered by the heat.",
+      "Batik trousers cut two ways — a wide-leg palazzo and a gathered harem, both finished with an easy elastic waist. Pick the fit here, then choose any print from the full collection.",
+    story: "Cut loose for the tropical heat, from the same Petaling Street studio.",
     sizes: ["S", "M", "L", "XL"],
     colorway: ["#2e1f1c", "#c23a6a"],
     featured: true,
@@ -441,6 +416,23 @@ export const products: Product[] = [
       "/products/pants/purple/flat.jpg",
       "/products/pants/red-green/model.jpg",
       "/products/pants/red-green/flat.jpg",
+    ],
+  },
+  {
+    slug: "batik-sweater",
+    name: "Batik Sweater",
+    category: "sweater",
+    priceMYR: 219,
+    description:
+      "A zip-front bomber cut in batik florals, ribbed at the collar, cuffs and hem for cooler evenings. Pick this silhouette, then choose any print from the full collection.",
+    story: "Warm enough for the walk home once Petaling Street cools down.",
+    sizes: ["S", "M", "L", "XL"],
+    colorway: ["#8ba3ac", "#7a2f3a"],
+    featured: true,
+    photo: "/products/sweaters/flower/model.jpg",
+    gallery: [
+      "/products/sweaters/flower/model.jpg",
+      "/products/sweaters/flower/flat.jpg",
     ],
   },
 ];

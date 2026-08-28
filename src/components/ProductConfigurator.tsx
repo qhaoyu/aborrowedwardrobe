@@ -7,7 +7,6 @@ import BatikSwatch from "@/components/BatikSwatch";
 import DesignPicker from "@/components/DesignPicker";
 import { useCart } from "@/lib/cart-context";
 import {
-  categoryLabels,
   designs,
   fabricMotifLabels,
   formatMYR,
@@ -90,8 +89,7 @@ export default function ProductConfigurator({ product }: { product: Product }) {
 
       <div>
         <p className="text-xs uppercase tracking-[0.15em] text-[color:var(--color-terracotta)]">
-          {design ? `${fabricMotifLabels[design.motif]} · ${design.name} · ` : ""}
-          {categoryLabels[product.category]}
+          {design ? `${fabricMotifLabels[design.motif]} · ${design.name}` : "Pick your print below"}
         </p>
         <h1 className="mt-2 font-serif text-3xl text-[color:var(--color-ink)] sm:text-4xl">
           {product.name}

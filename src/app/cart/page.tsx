@@ -46,7 +46,7 @@ export default function CartPage() {
           Your cart is empty
         </h1>
         <p className="mt-3 text-sm text-[color:var(--color-ink)]/70">
-          Add a shirt or pair of pants from the collection to get started.
+          Add a piece from the collection to get started.
         </p>
         <Link
           href="/shop"

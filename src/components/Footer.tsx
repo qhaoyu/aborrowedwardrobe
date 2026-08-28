@@ -18,7 +18,7 @@ export default function Footer() {
             <p className="font-serif text-lg">A Borrowed Wardrobe</p>
           </div>
           <p className="mt-3 max-w-xs text-sm text-[color:var(--color-cream)]/70">
-            Batik shirts and pants made for wandering — designed and sold
+            Batik tops, pants, and sweaters made for wandering — designed and sold
             from the heart of Petaling Street, Chinatown, Kuala Lumpur.
           </p>
         </div>
