@@ -16,7 +16,7 @@ export default function AboutPage() {
             Our Story
           </p>
           <h1 className="mt-3 font-serif text-4xl text-[color:var(--color-ink)]">
-            Borrowed from the street, made to keep.
+            Made by one designer, found nowhere else.
           </h1>
         </div>
       </section>
