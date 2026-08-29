@@ -114,7 +114,7 @@ export const costumes: Costume[] = [
     description:
       "Two beaded kebaya-style tops — one floral, one teal — each paired with a satin skirt, shot together on a rooftop at dusk.",
     photo: "/editorial/baba-nyonya-attire/01.jpg",
-    gallery: look("baba-nyonya-attire", 3),
+    gallery: look("baba-nyonya-attire", 8),
   },
   {
     slug: "malaysia-batik-gown-1-2",
@@ -187,24 +187,14 @@ export const costumes: Costume[] = [
     gallery: look("sarawak-dayak-heritage-attire", 1),
   },
   {
-    slug: "look-17",
-    name: "Skyline Duet",
-    category: "two-piece",
-    location: "Upper House Rooftop, Kuala Lumpur",
-    description:
-      "Two beaded kebaya-style looks in maroon and blue, shot together on a rooftop as the city skyline lights up at dusk.",
-    photo: "/editorial/look-17/01.jpg",
-    gallery: look("look-17", 5),
-  },
-  {
-    slug: "look-18",
-    name: "Lai Foong Bloom",
+    slug: "peranakan-elegance-bridal-attire",
+    name: "Peranakan Elegance Bridal Attire",
     category: "gown",
     location: "Petaling Street",
     description:
       "A pink-and-gold brocade gown with an embroidered floral border and a pearl-tasseled headdress, outside a Petaling Street restaurant.",
-    photo: "/editorial/look-18/01.jpg",
-    gallery: look("look-18", 5),
+    photo: "/editorial/peranakan-elegance-bridal-attire/01.jpg",
+    gallery: look("peranakan-elegance-bridal-attire", 5),
   },
   {
     slug: "look-19",
