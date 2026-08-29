@@ -69,7 +69,7 @@ export default function Home() {
       <StoryBlock
         eyebrow="The Street"
         heading="They always stopped. They rarely bought."
-        photo="/editorial/look-03/01.jpg"
+        photo="/editorial/terengganu-selendang-attire/01.jpg"
         photoAlt="A model in songket fabric in a Kuala Lumpur mural alley"
       >
         <p>
