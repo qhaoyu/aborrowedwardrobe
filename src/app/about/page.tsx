@@ -24,13 +24,14 @@ export default function AboutPage() {
       <section className="border-b border-[color:var(--color-line)]">
         <div className="grid md:grid-cols-2 md:items-stretch">
           <div className="relative order-1 aspect-[4/5] w-full overflow-hidden md:aspect-auto md:min-h-[600px]">
-            {/* Swap for a real photo of Karl Ho: <Image src="/team/karl-ho.jpg" alt="Karl Ho" fill sizes="50vw" className="object-cover" /> */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[color:var(--color-line)]/30 text-[color:var(--color-ink)]/35">
-              <span className="font-serif text-7xl">KH</span>
-              <span className="text-xs uppercase tracking-[0.2em]">
-                Photo coming soon
-              </span>
-            </div>
+            <Image
+              src="/team/karl-ho.jpg"
+              alt="Karl Ho with models wearing his couture gowns"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              priority
+              className="object-cover"
+            />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[color:var(--color-ink)]/85 via-[color:var(--color-ink)]/25 to-transparent px-8 pb-8 pt-32 sm:px-10">
               <p className="text-xs uppercase tracking-[0.25em] text-[color:var(--color-gold)]">
                 Our Designer
