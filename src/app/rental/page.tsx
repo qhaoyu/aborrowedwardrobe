@@ -4,9 +4,9 @@ import RentalInterestForm from "@/components/RentalInterestForm";
 import { costumes } from "@/lib/costumes";
 
 export const metadata = {
-  title: "Wardrobe Rental (Coming Soon) | A Borrowed Wardrobe",
+  title: "Wardrobe Rental | A Borrowed Wardrobe",
   description:
-    "Rent a traditional costume for a photoshoot walk through Kuala Lumpur. Coming soon from A Borrowed Wardrobe, Petaling Street.",
+    "Rent a traditional costume for a photoshoot walk through Kuala Lumpur, from A Borrowed Wardrobe, Petaling Street.",
 };
 
 const steps = [
@@ -34,23 +34,22 @@ export default function RentalPage() {
       <section className="border-b border-[color:var(--color-line)] bg-[color:var(--color-indigo)] text-[color:var(--color-cream)]">
         <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-8">
           <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-gold)]">
-            Coming Soon
+            Now Booking
           </p>
           <h1 className="mt-3 font-serif text-4xl">
             Borrow a costume for the day.
           </h1>
           <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-cream)]/80">
-            We&apos;re building a new way to experience Kuala Lumpur: rent a
-            full traditional costume, walk the streets of Chinatown for a
-            photoshoot, then return it before you leave — no suitcase space
-            required.
+            A new way to experience Kuala Lumpur: rent a full traditional
+            costume, walk the streets of Chinatown for a photoshoot, then
+            return it before you leave — no suitcase space required.
           </p>
         </div>
       </section>
 
       <section className="mx-auto max-w-5xl px-5 py-16 sm:px-8">
         <h2 className="text-center font-serif text-2xl text-[color:var(--color-ink)] sm:text-3xl">
-          How it will work
+          How it works
         </h2>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
           {steps.map((step, i) => (
@@ -79,9 +78,9 @@ export default function RentalPage() {
               {costumes.length} Looks, Shot Around Petaling Street
             </h2>
             <p className="mt-3 text-sm text-[color:var(--color-ink)]/70">
-              Every costume we&apos;ll have ready to rent, photographed on
-              location around Chinatown and Kuala Lumpur. Tap a look for the
-              full set of photos.
+              Every costume ready to rent, photographed on location around
+              Chinatown and Kuala Lumpur. Tap a look for the full set of
+              photos, and to book.
             </p>
           </div>
           <CostumeGallery costumes={costumes} />
@@ -101,11 +100,11 @@ export default function RentalPage() {
           </div>
           <div>
             <h2 className="font-serif text-2xl text-[color:var(--color-ink)] sm:text-3xl">
-              Be first to know when we launch
+              Questions before you book?
             </h2>
             <p className="mt-3 text-sm text-[color:var(--color-ink)]/70">
-              Leave your details below and we&apos;ll reach out when
-              wardrobe rental is ready to book.
+              Tap any look above to book it directly, or leave your details
+              below and we&apos;ll get back to you.
             </p>
             <div className="mt-8">
               <RentalInterestForm />

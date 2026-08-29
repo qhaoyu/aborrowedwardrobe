@@ -10,9 +10,9 @@ export default function RentalInterestForm() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const subject = encodeURIComponent("Wardrobe Rental — Notify Me");
+    const subject = encodeURIComponent("Wardrobe Rental — Enquiry");
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nExpected travel dates in KL: ${travelDates}\n\nPlease notify me when the costume rental experience launches.`,
+      `Name: ${name}\nEmail: ${email}\nExpected travel dates in KL: ${travelDates}\n\nI'd like to ask about renting a costume.`,
     );
     window.location.href = `mailto:${siteConfig.contactEmail}?subject=${subject}&body=${body}`;
   }
@@ -60,11 +60,10 @@ export default function RentalInterestForm() {
         type="submit"
         className="mt-2 rounded-sm bg-[color:var(--color-terracotta)] px-6 py-3 text-sm uppercase tracking-wide text-[color:var(--color-cream)] transition-opacity hover:opacity-90"
       >
-        Notify Me When It Launches
+        Send Enquiry
       </button>
       <p className="text-xs text-[color:var(--color-ink)]/50">
-        This opens your email app addressed to us — we don&apos;t store this
-        information yet.
+        This opens your email app addressed to us.
       </p>
     </form>
   );

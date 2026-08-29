@@ -54,7 +54,7 @@ export default function Footer() {
               Our Story
             </Link>
             <Link href="/rental" className="text-[color:var(--color-cream)]/80 hover:text-[color:var(--color-cream)]">
-              Wardrobe Rental (Coming Soon)
+              Wardrobe Rental
             </Link>
           </div>
         </div>

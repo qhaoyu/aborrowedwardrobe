@@ -2,21 +2,28 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useLenis } from "lenis/react";
 import TiltCard from "@/components/TiltCard";
-import { costumeCategoryLabels, type Costume, type CostumeCategory } from "@/lib/costumes";
+import { formatMYR } from "@/lib/products";
+import { rentalDurationOptions } from "@/lib/rental";
+import type { Costume } from "@/lib/costumes";
 
-const categoryOrder: CostumeCategory[] = ["gown", "two-piece", "pantsuit", "kaftan"];
+const fromPriceMYR = Math.min(...rentalDurationOptions.map((d) => d.priceMYR));
 
 export default function CostumeGallery({ costumes }: { costumes: Costume[] }) {
-  const [filter, setFilter] = useState<CostumeCategory | "all">("all");
+  const [filter, setFilter] = useState<string | "all">("all");
   const [openSlug, setOpenSlug] = useState<string | null>(null);
   const [photoIndex, setPhotoIndex] = useState(0);
   const active = costumes.find((c) => c.slug === openSlug) ?? null;
   const lenis = useLenis();
 
+  // Categories aren't a fixed set — as costumes get their real names, their
+  // category becomes the state/culture that name identifies, so the list of
+  // groups grows over time. Sorting alphabetically keeps that list ordered
+  // without needing a curated list to update by hand.
   const categories = useMemo(
-    () => categoryOrder.filter((cat) => costumes.some((c) => c.category === cat)),
+    () => Array.from(new Set(costumes.map((c) => c.category))).sort(),
     [costumes]
   );
   const visibleCategories = filter === "all" ? categories : [filter];
@@ -78,7 +85,7 @@ export default function CostumeGallery({ costumes }: { costumes: Costume[] }) {
                 : "border-[color:var(--color-line)] text-[color:var(--color-ink)]/70 hover:border-[color:var(--color-terracotta)]"
             }`}
           >
-            {costumeCategoryLabels[cat]}
+            {cat}
           </button>
         ))}
       </div>
@@ -90,7 +97,7 @@ export default function CostumeGallery({ costumes }: { costumes: Costume[] }) {
             <section key={cat}>
               <div className="mb-5 flex items-baseline justify-between gap-4 border-b border-[color:var(--color-line)] pb-3">
                 <h2 className="font-serif text-xl text-[color:var(--color-ink)]">
-                  {costumeCategoryLabels[cat]}
+                  {cat}
                 </h2>
                 <p className="shrink-0 text-xs uppercase tracking-wide text-[color:var(--color-ink)]/50">
                   {items.length} look{items.length !== 1 ? "s" : ""}
@@ -179,7 +186,7 @@ export default function CostumeGallery({ costumes }: { costumes: Costume[] }) {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-terracotta)]">
-                    {costumeCategoryLabels[active.category]}
+                    {active.category}
                   </p>
                   <h2 className="mt-1 font-serif text-2xl text-[color:var(--color-ink)]">
                     {active.name}
@@ -198,6 +205,13 @@ export default function CostumeGallery({ costumes }: { costumes: Costume[] }) {
               <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-ink)]/75">
                 {active.description}
               </p>
+
+              <Link
+                href={`/rental/${active.slug}`}
+                className="mt-5 inline-block rounded-sm bg-[color:var(--color-terracotta)] px-6 py-3 text-center text-sm uppercase tracking-wide text-[color:var(--color-cream)] transition-opacity hover:opacity-90"
+              >
+                Rent This Look — from {formatMYR(fromPriceMYR)}
+              </Link>
 
               {active.gallery.length > 1 && (
                 <div className="mt-6 grid grid-cols-5 gap-2">
