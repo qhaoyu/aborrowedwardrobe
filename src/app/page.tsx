@@ -17,7 +17,7 @@ export default function Home() {
           aria-hidden
         >
           <Image
-            src="/editorial/look-19/01.jpg"
+            src="/editorial/perak-warrior-royalty-attire/01.jpg"
             alt=""
             fill
             priority

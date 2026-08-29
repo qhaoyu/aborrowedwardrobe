@@ -197,24 +197,24 @@ export const costumes: Costume[] = [
     gallery: look("peranakan-elegance-bridal-attire", 5),
   },
   {
-    slug: "look-19",
-    name: "Crimson Dusk",
+    slug: "perak-warrior-royalty-attire",
+    name: "Perak Warrior Royalty Attire",
     category: "two-piece",
     location: "Mural Alley, Kuala Lumpur",
     description:
       "A red kebaya-style top with a gold cape collar and black beaded fringe, under a winged crown as the sky turns dusk-purple.",
-    photo: "/editorial/look-19/01.jpg",
-    gallery: look("look-19", 5),
+    photo: "/editorial/perak-warrior-royalty-attire/01.jpg",
+    gallery: look("perak-warrior-royalty-attire", 5),
   },
   {
-    slug: "look-20",
-    name: "Scarlet Market",
+    slug: "sarawak-colorful-tribal-attire",
+    name: "Sarawak Colorful Tribal Attire",
     category: "gown",
     location: "Market Alley, Kuala Lumpur",
     description:
       "A one-shoulder red satin gown with a geometric songket panel and a pompom-trimmed cape collar, shot through a market alley.",
-    photo: "/editorial/look-20/01.jpg",
-    gallery: look("look-20", 3),
+    photo: "/editorial/sarawak-colorful-tribal-attire/01.jpg",
+    gallery: look("sarawak-colorful-tribal-attire", 3),
   },
   {
     slug: "look-21",
