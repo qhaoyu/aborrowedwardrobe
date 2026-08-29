@@ -176,16 +176,6 @@ export const costumes: Costume[] = [
     gallery: look("modern-kebaya-attire", 1),
   },
   {
-    slug: "sarawak-dayak-heritage-attire",
-    name: "Sarawak Dayak Heritage Attire",
-    category: "Sarawak",
-    location: "Flower Stall Alley, Kuala Lumpur",
-    description:
-      "A coral satin gown with a woven songket train and a silver beaded crown, shot beside a wall of flower-garland stalls.",
-    photo: "/editorial/sarawak-dayak-heritage-attire/01.jpg",
-    gallery: look("sarawak-dayak-heritage-attire", 1),
-  },
-  {
     slug: "peranakan-elegance-bridal-attire",
     name: "Peranakan Elegance Bridal Attire",
     category: "Peranakan",
@@ -213,7 +203,7 @@ export const costumes: Costume[] = [
     description:
       "A one-shoulder red satin gown with a geometric songket panel and a pompom-trimmed cape collar, shot through a market alley.",
     photo: "/editorial/sarawak-colorful-tribal-attire/01.jpg",
-    gallery: look("sarawak-colorful-tribal-attire", 3),
+    gallery: look("sarawak-colorful-tribal-attire", 4),
   },
   {
     slug: "pahang-inderapura-attire",
