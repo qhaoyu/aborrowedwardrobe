@@ -21,23 +21,36 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-[color:var(--color-line)] bg-white/40">
-        <div className="mx-auto grid max-w-5xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-2 md:items-center">
-          <div className="order-2 md:order-1">
+      <section className="border-b border-[color:var(--color-line)]">
+        <div className="grid md:grid-cols-2 md:items-stretch">
+          <div className="relative order-1 aspect-[4/5] w-full overflow-hidden md:aspect-auto md:min-h-[600px]">
+            {/* Swap for a real photo of Karl Ho: <Image src="/team/karl-ho.jpg" alt="Karl Ho" fill sizes="50vw" className="object-cover" /> */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[color:var(--color-line)]/30 text-[color:var(--color-ink)]/35">
+              <span className="font-serif text-7xl">KH</span>
+              <span className="text-xs uppercase tracking-[0.2em]">
+                Photo coming soon
+              </span>
+            </div>
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[color:var(--color-ink)]/85 via-[color:var(--color-ink)]/25 to-transparent px-8 pb-8 pt-32 sm:px-10">
+              <p className="text-xs uppercase tracking-[0.25em] text-[color:var(--color-gold)]">
+                Our Designer
+              </p>
+              <h2 className="mt-2 font-serif text-5xl text-white sm:text-6xl">
+                Karl Ho
+              </h2>
+            </div>
+          </div>
+          <div className="order-2 flex flex-col justify-center bg-white/40 px-5 py-16 sm:px-10 md:px-16 lg:px-20">
             <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-terracotta)]">
-              Our Designer
+              National Treasure in Fashion &amp; Batik
             </p>
-            <h2 className="mt-2 font-serif text-3xl text-[color:var(--color-ink)] sm:text-4xl">
-              Karl Ho
-            </h2>
             <div className="mt-5 space-y-4 leading-relaxed text-[color:var(--color-ink)]/80">
               <p>
-                Every print in this collection starts with Karl Ho — a
-                Seremban-born couturier regarded as one of Malaysia&apos;s
-                national treasures in fashion and batik. A Performing Arts
-                graduate of the University of Malaya, he founded the fashion
-                house THEMODHOUSE in 2006 and grew it into seventeen stores
-                across Malaysia and two more in Dongguan, China.
+                Every print in this collection starts with Karl Ho, the
+                Seremban-born couturier behind it. A Performing Arts graduate
+                of the University of Malaya, he founded the fashion house
+                THEMODHOUSE in 2006 and grew it into seventeen stores across
+                Malaysia and two more in Dongguan, China.
               </p>
               <p>
                 From there his couture travelled further still — onto the
@@ -50,22 +63,22 @@ export default function AboutPage() {
                 custom batik showcase ever staged — 1,800 participants, each
                 piece his own.
               </p>
-              <p className="italic text-[color:var(--color-ink)]/70">
-                That&apos;s the hand behind every piece you&apos;ll find
-                here.
-              </p>
             </div>
-            <p className="mt-6 text-xs uppercase tracking-[0.15em] text-[color:var(--color-ink)]/50">
-              New York · Cannes · Fujian · Milan · ASEAN Book of Record
+            <p className="mt-8 border-l-2 border-[color:var(--color-terracotta)] pl-5 font-serif text-xl italic leading-snug text-[color:var(--color-ink)]">
+              &ldquo;That&apos;s the hand behind every piece you&apos;ll find
+              here.&rdquo;
             </p>
-          </div>
-          <div className="order-1 md:order-2">
-            {/* Swap for a real photo of Karl Ho: <Image src="/team/karl-ho.jpg" alt="Karl Ho" fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover" /> */}
-            <div className="relative flex aspect-[3/4] w-full flex-col items-center justify-center gap-3 overflow-hidden rounded-sm border border-[color:var(--color-line)] bg-[color:var(--color-line)]/30 text-[color:var(--color-ink)]/35 shadow-md">
-              <span className="font-serif text-6xl">KH</span>
-              <span className="text-xs uppercase tracking-[0.2em]">
-                Photo coming soon
-              </span>
+            <div className="mt-8 flex flex-wrap gap-2">
+              {["New York", "Cannes", "Fujian", "Milan", "ASEAN Book of Record"].map(
+                (tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-[color:var(--color-line)] px-3 py-1 text-xs uppercase tracking-wide text-[color:var(--color-ink)]/60"
+                  >
+                    {tag}
+                  </span>
+                ),
+              )}
             </div>
           </div>
         </div>
