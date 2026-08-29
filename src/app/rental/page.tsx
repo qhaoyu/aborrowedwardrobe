@@ -47,27 +47,6 @@ export default function RentalPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 py-16 sm:px-8">
-        <h2 className="text-center font-serif text-2xl text-[color:var(--color-ink)] sm:text-3xl">
-          How it works
-        </h2>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
-          {steps.map((step, i) => (
-            <div key={step.title} className="rounded-sm border border-[color:var(--color-line)] p-5">
-              <p className="text-xs uppercase tracking-[0.15em] text-[color:var(--color-terracotta)]">
-                Step {i + 1}
-              </p>
-              <p className="mt-2 font-serif text-lg text-[color:var(--color-ink)]">
-                {step.title}
-              </p>
-              <p className="mt-2 text-sm text-[color:var(--color-ink)]/70">
-                {step.body}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="border-t border-[color:var(--color-line)] px-5 py-16 sm:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 max-w-2xl">
@@ -110,6 +89,27 @@ export default function RentalPage() {
               <RentalInterestForm />
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-5 py-16 sm:px-8">
+        <h2 className="text-center font-serif text-2xl text-[color:var(--color-ink)] sm:text-3xl">
+          How it works
+        </h2>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
+          {steps.map((step, i) => (
+            <div key={step.title} className="rounded-sm border border-[color:var(--color-line)] p-5">
+              <p className="text-xs uppercase tracking-[0.15em] text-[color:var(--color-terracotta)]">
+                Step {i + 1}
+              </p>
+              <p className="mt-2 font-serif text-lg text-[color:var(--color-ink)]">
+                {step.title}
+              </p>
+              <p className="mt-2 text-sm text-[color:var(--color-ink)]/70">
+                {step.body}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
     </div>
