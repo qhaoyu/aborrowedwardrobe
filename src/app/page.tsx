@@ -106,7 +106,7 @@ export default function Home() {
       <StoryBlock
         eyebrow="The Studio"
         heading="Above a shopfront, on the street itself."
-        photo="/editorial/look-22/01.jpg"
+        photo="/editorial/penang-straits-heritage-attire/01.jpg"
         photoAlt="A model in an embroidered cape dress in a Kuala Lumpur market"
       >
         <p>
