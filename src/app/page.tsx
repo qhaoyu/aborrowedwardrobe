@@ -55,6 +55,12 @@ export default function Home() {
             >
               Read Our Story
             </Link>
+            <Link
+              href="/rental"
+              className="rounded-sm border border-[color:var(--color-indigo)] px-6 py-3 text-sm uppercase tracking-wide text-[color:var(--color-indigo)] transition-colors hover:bg-[color:var(--color-indigo)] hover:text-[color:var(--color-cream)]"
+            >
+              Book a Costume
+            </Link>
           </div>
         </div>
 
@@ -103,6 +109,35 @@ export default function Home() {
           Kunang for the quiet print instead of the loud one.&rdquo;
         </p>
       </StoryBlock>
+
+      {/* Rental showcase */}
+      <ScrollReveal>
+        <section className="bg-[color:var(--color-indigo)] text-[color:var(--color-cream)]">
+          <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 md:grid-cols-2 md:items-center md:gap-16">
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-gold)]">
+                Now Booking
+              </p>
+              <h2 className="mt-2 font-serif text-3xl sm:text-4xl">
+                Borrow a costume, not just an outfit.
+              </h2>
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-[color:var(--color-cream)]/80">
+                A rental experience for tourists — dress up in traditional
+                costume for a photoshoot walk through Kuala Lumpur, then
+                return it before you fly home. Pick a look below, or browse
+                the full wardrobe.
+              </p>
+              <Link
+                href="/rental"
+                className="mt-8 inline-block rounded-sm border border-[color:var(--color-cream)] px-6 py-3 text-sm uppercase tracking-wide transition-colors hover:bg-[color:var(--color-cream)] hover:text-[color:var(--color-indigo)]"
+              >
+                Book a Costume
+              </Link>
+            </div>
+            <RentalCarousel />
+          </div>
+        </section>
+      </ScrollReveal>
 
       <StoryBlock
         eyebrow="The Studio"
@@ -163,35 +198,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
-      {/* Rental showcase */}
-      <ScrollReveal>
-        <section className="bg-[color:var(--color-indigo)] text-[color:var(--color-cream)]">
-          <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 md:grid-cols-2 md:items-center md:gap-16">
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-gold)]">
-                Now Booking
-              </p>
-              <h2 className="mt-2 font-serif text-3xl sm:text-4xl">
-                Borrow a costume, not just an outfit.
-              </h2>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-[color:var(--color-cream)]/80">
-                A rental experience for tourists — dress up in traditional
-                costume for a photoshoot walk through Kuala Lumpur, then
-                return it before you fly home. Pick a look below, or browse
-                the full wardrobe.
-              </p>
-              <Link
-                href="/rental"
-                className="mt-8 inline-block rounded-sm border border-[color:var(--color-cream)] px-6 py-3 text-sm uppercase tracking-wide transition-colors hover:bg-[color:var(--color-cream)] hover:text-[color:var(--color-indigo)]"
-              >
-                Book a Costume
-              </Link>
-            </div>
-            <RentalCarousel />
-          </div>
-        </section>
-      </ScrollReveal>
     </div>
   );
 }
