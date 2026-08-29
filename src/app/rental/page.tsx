@@ -91,8 +91,8 @@ export default function RentalPage() {
         <div className="mx-auto grid max-w-5xl gap-10 px-5 py-16 sm:px-8 md:grid-cols-2 md:items-center">
           <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm shadow-md">
             <Image
-              src="/editorial/modern-kebaya-attire/01.jpg"
-              alt="A model in a batik jacket and orange skirt at Kasturi Walk, Kuala Lumpur"
+              src="/editorial/peranakan-elegance-bridal-attire/01.jpg"
+              alt="A model in Peranakan Elegance Bridal Attire, outside a Petaling Street restaurant"
               fill
               sizes="(min-width: 768px) 40vw, 100vw"
               className="object-cover"
