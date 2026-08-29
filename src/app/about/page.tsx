@@ -16,7 +16,7 @@ export default function AboutPage() {
             Our Story
           </p>
           <h1 className="mt-3 font-serif text-4xl text-[color:var(--color-ink)]">
-            Made by one designer, found nowhere else.
+            One designer. One collection. Nothing else like it.
           </h1>
         </div>
       </section>
