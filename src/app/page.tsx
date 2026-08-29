@@ -87,7 +87,7 @@ export default function Home() {
       <StoryBlock
         eyebrow="The Craft"
         heading="A story printed into every motif."
-        photo="/editorial/look-05/06.jpg"
+        photo="/editorial/malaysia-elegance-gown/06.jpg"
         photoAlt="A model in a blue and gold batik gown before a lit clock tower at night, Kuala Lumpur"
         reverse
       >

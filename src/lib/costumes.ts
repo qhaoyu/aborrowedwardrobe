@@ -76,14 +76,14 @@ export const costumes: Costume[] = [
     gallery: look("malaysia-batik-gown-1", 5),
   },
   {
-    slug: "look-05",
-    name: "Kwai Chai Muse",
-    category: "Gowns",
+    slug: "malaysia-elegance-gown",
+    name: "Malaysia Elegance Gown",
+    category: "Malaysia",
     location: "Kwai Chai Hong",
     description:
       "A strapless gold-and-navy batik column gown with a dramatic royal-blue satin train, framed by Kwai Chai Hong's painted walls and string lights.",
-    photo: "/editorial/look-05/01.jpg",
-    gallery: look("look-05", 8),
+    photo: "/editorial/malaysia-elegance-gown/01.jpg",
+    gallery: look("malaysia-elegance-gown", 8),
   },
   {
     slug: "malacca-regal-bride-attire",
@@ -136,14 +136,14 @@ export const costumes: Costume[] = [
     gallery: look("negeri-sembilan-minangkabau-attire", 1),
   },
   {
-    slug: "look-12",
-    name: "Lantern Garland",
-    category: "Gowns",
+    slug: "the-seri-selangor-attire",
+    name: "The Seri Selangor Attire",
+    category: "Selangor",
     location: "Heritage Street, Kuala Lumpur",
     description:
       "A cream-and-maroon songket dress with a floral garland draped over one shoulder, beneath a street strung with paper lanterns.",
-    photo: "/editorial/look-12/01.jpg",
-    gallery: look("look-12", 2),
+    photo: "/editorial/the-seri-selangor-attire/01.jpg",
+    gallery: look("the-seri-selangor-attire", 2),
   },
   {
     slug: "terengganu-ulek-mayang-attire",
@@ -166,14 +166,14 @@ export const costumes: Costume[] = [
     gallery: look("the-perak-royal-grace-attire", 2),
   },
   {
-    slug: "look-15",
-    name: "Kasturi Walk",
-    category: "Two-Piece Sets",
+    slug: "modern-kebaya-attire",
+    name: "Modern Kebaya Attire",
+    category: "Malaysia",
     location: "Kasturi Walk, Central Market",
     description:
       "A bold floral-paisley batik jacket over a solid orange skirt, shot beneath the Kasturi Walk archway by Central Market.",
-    photo: "/editorial/look-15/01.jpg",
-    gallery: look("look-15", 1),
+    photo: "/editorial/modern-kebaya-attire/01.jpg",
+    gallery: look("modern-kebaya-attire", 1),
   },
   {
     slug: "sarawak-dayak-heritage-attire",
