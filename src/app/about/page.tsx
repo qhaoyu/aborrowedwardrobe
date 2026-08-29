@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-import BatikSwatch from "@/components/BatikSwatch";
 
 export const metadata = {
   title: "Our Story | A Borrowed Wardrobe",
@@ -21,55 +21,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-5xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-2 md:items-center">
-        <div className="space-y-5 leading-relaxed text-[color:var(--color-ink)]/80">
-          <p>
-            A Borrowed Wardrobe started with a simple observation: travellers
-            walking through Petaling Street would stop, again and again, in
-            front of the same batik stalls — running their hands over the
-            fabric, admiring patterns they didn&apos;t quite know the meaning
-            of, and often leaving without buying anything, unsure of the fit
-            or the story behind what they were looking at.
-          </p>
-          <p>
-            We wanted to change that. Every piece — top, trousers, or
-            sweater — is hand-block-printed batik, cut in modern,
-            travel-friendly silhouettes. Pick the piece first, then choose
-            any print from our own house collection, so what you bring
-            home means something beyond a souvenir.
-          </p>
-          <p>
-            Our studio sits above a shopfront in the middle of Chinatown,
-            Kuala Lumpur — the same street our customers wander through on
-            their first night in the city, and the same street we hope
-            they&apos;ll think of every time they wear what they bought here.
-          </p>
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          <BatikSwatch
-            pattern="truntum"
-            colorway={["#2b2b2b", "#c94f4f"]}
-            className="aspect-square w-full rounded-sm shadow-md"
-          />
-          <BatikSwatch
-            pattern="sido-mukti"
-            colorway={["#4a1f3d", "#d4af37"]}
-            className="mt-8 aspect-square w-full rounded-sm shadow-md"
-          />
-          <BatikSwatch
-            pattern="sekar-jagad"
-            colorway={["#8a3b1f", "#2c6e49"]}
-            className="aspect-square w-full rounded-sm shadow-md"
-          />
-          <BatikSwatch
-            pattern="kawung"
-            colorway={["#1f3a3d", "#c9b458"]}
-            className="mt-[-2rem] aspect-square w-full rounded-sm shadow-md"
-          />
-        </div>
-      </section>
-
-      <section className="border-t border-[color:var(--color-line)] bg-white/40">
+      <section className="border-b border-[color:var(--color-line)] bg-white/40">
         <div className="mx-auto grid max-w-5xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-2 md:items-center">
           <div className="order-2 md:order-1">
             <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-terracotta)]">
@@ -116,6 +68,41 @@ export default function AboutPage() {
               </span>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-5xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-2 md:items-center">
+        <div className="space-y-5 leading-relaxed text-[color:var(--color-ink)]/80">
+          <p>
+            A Borrowed Wardrobe started with a simple observation: travellers
+            walking through Petaling Street would stop, again and again, in
+            front of the same batik stalls — running their hands over the
+            fabric, admiring patterns they didn&apos;t quite know the meaning
+            of, and often leaving without buying anything, unsure of the fit
+            or the story behind what they were looking at.
+          </p>
+          <p>
+            We wanted to change that. Every piece — top, trousers, or
+            sweater — is hand-block-printed batik, cut in modern,
+            travel-friendly silhouettes. Pick the piece first, then choose
+            any print from our own house collection, so what you bring
+            home means something beyond a souvenir.
+          </p>
+          <p>
+            Our studio sits above a shopfront in the middle of Chinatown,
+            Kuala Lumpur — the same street our customers wander through on
+            their first night in the city, and the same street we hope
+            they&apos;ll think of every time they wear what they bought here.
+          </p>
+        </div>
+        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm shadow-md">
+          <Image
+            src="/editorial/peranakan-elegance-bridal-attire/01.jpg"
+            alt="A model in Peranakan Elegance Bridal Attire, outside a Petaling Street restaurant"
+            fill
+            sizes="(min-width: 768px) 40vw, 100vw"
+            className="object-cover"
+          />
         </div>
       </section>
 
