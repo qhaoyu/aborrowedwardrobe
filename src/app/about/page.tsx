@@ -69,6 +69,56 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="border-t border-[color:var(--color-line)] bg-white/40">
+        <div className="mx-auto grid max-w-5xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-2 md:items-center">
+          <div className="order-2 md:order-1">
+            <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-terracotta)]">
+              Our Designer
+            </p>
+            <h2 className="mt-2 font-serif text-3xl text-[color:var(--color-ink)] sm:text-4xl">
+              Karl Ho
+            </h2>
+            <div className="mt-5 space-y-4 leading-relaxed text-[color:var(--color-ink)]/80">
+              <p>
+                Every print in this collection starts with Karl Ho — a
+                Seremban-born couturier regarded as one of Malaysia&apos;s
+                national treasures in fashion and batik. A Performing Arts
+                graduate of the University of Malaya, he founded the fashion
+                house THEMODHOUSE in 2006 and grew it into seventeen stores
+                across Malaysia and two more in Dongguan, China.
+              </p>
+              <p>
+                From there his couture travelled further still — onto the
+                runway at New York&apos;s Couture Fashion Week, then Cannes,
+                where he won the Outstanding Fashion Styling Award, then
+                Fujian, where he was named Cultural Fashion Ambassador by
+                Tourism Changting. In October 2025, Milan Fashion Week named
+                him Best Designer. Three months later, back home in Negeri
+                Sembilan, he set an ASEAN Book of Record for the largest
+                custom batik showcase ever staged — 1,800 participants, each
+                piece his own.
+              </p>
+              <p className="italic text-[color:var(--color-ink)]/70">
+                That&apos;s the hand behind every piece you&apos;ll find
+                here.
+              </p>
+            </div>
+            <p className="mt-6 text-xs uppercase tracking-[0.15em] text-[color:var(--color-ink)]/50">
+              New York · Cannes · Fujian · Milan · ASEAN Book of Record
+            </p>
+          </div>
+          <div className="order-1 md:order-2">
+            {/* Swap for a real photo of Karl Ho: <Image src="/team/karl-ho.jpg" alt="Karl Ho" fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover" /> */}
+            <div className="relative flex aspect-[3/4] w-full flex-col items-center justify-center gap-3 overflow-hidden rounded-sm border border-[color:var(--color-line)] bg-[color:var(--color-line)]/30 text-[color:var(--color-ink)]/35 shadow-md">
+              <span className="font-serif text-6xl">KH</span>
+              <span className="text-xs uppercase tracking-[0.2em]">
+                Photo coming soon
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-[color:var(--color-ink)] text-[color:var(--color-cream)]">
         <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-8">
           <h2 className="font-serif text-2xl sm:text-3xl">
