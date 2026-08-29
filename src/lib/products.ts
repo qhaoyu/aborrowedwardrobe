@@ -401,7 +401,7 @@ export const products: Product[] = [
     slug: "batik-pants",
     name: "Batik Pants",
     category: "pants",
-    priceMYR: 229,
+    priceMYR: 199,
     description:
       "Batik trousers cut two ways — a wide-leg palazzo and a gathered harem, both finished with an easy elastic waist. Pick the fit here, then choose any print from the full collection.",
     story: "Cut loose for the tropical heat, from the same Petaling Street studio.",
@@ -422,7 +422,7 @@ export const products: Product[] = [
     slug: "batik-sweater",
     name: "Batik Sweater",
     category: "sweater",
-    priceMYR: 219,
+    priceMYR: 299,
     description:
       "A zip-front bomber cut in batik florals, ribbed at the collar, cuffs and hem for cooler evenings. Pick this silhouette, then choose any print from the full collection.",
     story: "Warm enough for the walk home once Petaling Street cools down.",
