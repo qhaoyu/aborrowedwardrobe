@@ -127,14 +127,14 @@ export const costumes: Costume[] = [
     gallery: look("malaysia-batik-gown-1-2", 5),
   },
   {
-    slug: "look-10",
-    name: "Amber Crescent",
+    slug: "negeri-sembilan-minangkabau-attire",
+    name: "Negeri Sembilan Minangkabau Attire",
     category: "gown",
     location: "Street Art Wall, Kuala Lumpur",
     description:
       "A gold crescent headdress over a maroon-and-gold brocade long-sleeve dress, set against a hand-painted mural wall.",
-    photo: "/editorial/look-10/01.jpg",
-    gallery: look("look-10", 1),
+    photo: "/editorial/negeri-sembilan-minangkabau-attire/01.jpg",
+    gallery: look("negeri-sembilan-minangkabau-attire", 1),
   },
   {
     slug: "look-12",
@@ -147,24 +147,24 @@ export const costumes: Costume[] = [
     gallery: look("look-12", 2),
   },
   {
-    slug: "look-13",
-    name: "Jade Courtyard",
+    slug: "terengganu-ulek-mayang-attire",
+    name: "Terengganu Ulek Mayang Attire",
     category: "two-piece",
     location: "Lantern Courtyard, Kuala Lumpur",
     description:
       "A green-and-gold peplum top with sculptural shoulder pieces, a gold brocade fishtail skirt, and a flying silk sash, in a lantern-hung courtyard.",
-    photo: "/editorial/look-13/01.jpg",
-    gallery: look("look-13", 4),
+    photo: "/editorial/terengganu-ulek-mayang-attire/01.jpg",
+    gallery: look("terengganu-ulek-mayang-attire", 4),
   },
   {
-    slug: "look-14",
-    name: "Fan Mural",
+    slug: "the-perak-royal-grace-attire",
+    name: "The Perak Royal Grace Attire",
     category: "pantsuit",
     location: "Mural Wall, Kuala Lumpur",
     description:
       "A grey-and-blue songket peplum top with teal palazzo pants and a gold pointed crown, framed by a hand-painted fan mural.",
-    photo: "/editorial/look-14/01.jpg",
-    gallery: look("look-14", 2),
+    photo: "/editorial/the-perak-royal-grace-attire/01.jpg",
+    gallery: look("the-perak-royal-grace-attire", 2),
   },
   {
     slug: "look-15",
@@ -177,14 +177,14 @@ export const costumes: Costume[] = [
     gallery: look("look-15", 1),
   },
   {
-    slug: "look-16",
-    name: "Peacock Alley",
+    slug: "sarawak-dayak-heritage-attire",
+    name: "Sarawak Dayak Heritage Attire",
     category: "gown",
     location: "Flower Stall Alley, Kuala Lumpur",
     description:
       "A coral satin gown with a woven songket train and a silver beaded crown, shot beside a wall of flower-garland stalls.",
-    photo: "/editorial/look-16/01.jpg",
-    gallery: look("look-16", 1),
+    photo: "/editorial/sarawak-dayak-heritage-attire/01.jpg",
+    gallery: look("sarawak-dayak-heritage-attire", 1),
   },
   {
     slug: "look-17",
